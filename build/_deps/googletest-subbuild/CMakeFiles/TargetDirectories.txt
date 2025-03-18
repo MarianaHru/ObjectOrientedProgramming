@@ -1,0 +1,3 @@
+/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
+/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir

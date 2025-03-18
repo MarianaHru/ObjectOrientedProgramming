@@ -7,48 +7,43 @@ Fraction::Fraction(int numerator, int denominator)
 }
 
 // Встановлення чисельника
-void Fraction::setFirst(int value)
+bool Fraction::setFirst(int value)
 {
     if (value > 0)
     {
         first = value;
+        return true;
     }
     else
     {
         cerr << "Error: Numerator must be positive." << endl;
         exit(1);
+        return false;
     }
 }
 
 // Встановлення знаменника
-void Fraction::setSecond(int value)
+bool Fraction::setSecond(int value)
 {
     if (value > 0)
     {
         second = value;
+        return true;
     }
     else
     {
         cerr << "Error: Denominator must be positive and non-zero." << endl;
         exit(1);
-    }
-}
-
-// Метод ініціалізації
-bool Fraction::Init(int numerator, int denominator)
-{
-    if (numerator > 0 && denominator > 0)
-    {
-        first = numerator;
-        second = denominator;
-        return true;
-    }
-    else
-    {
-        cerr << "Error: Invalid values for fraction." << endl;
         return false;
     }
 }
+
+bool Fraction::Init(int numerator, int denominator)
+{
+    return setFirst(numerator) && setSecond(denominator);
+}
+
+// return hrn + "," + monets
 
 // Метод введення
 void Fraction::Read()
@@ -75,13 +70,13 @@ int Fraction::ipart() const
     return first / second;
 }
 
-// Функція створення об'єкта класу
 Fraction makeFraction(int numerator, int denominator)
 {
     Fraction f;
     if (!f.Init(numerator, denominator))
     {
         cerr << "Error: Failed to create fraction." << endl;
+        exit(1);
     }
     return f;
 }

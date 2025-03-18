@@ -1,26 +1,30 @@
-#ifndef MONEY_H
-#define MONEY_H
+#pragma once
+#include <string>
+#include <sstream>
 
-#include <iostream>
 using namespace std;
 
 class Money
 {
 private:
-    long hryvnias;
-    unsigned char kopecks;
+    long hryvna;
+    unsigned char kopek;
 
 public:
-    Money();                        // Конструктор за замовчуванням
-    Money(long h, unsigned char k); // Конструктор із параметрами
+    Money(long hryvna = 0, unsigned char kopek = 0);
 
-    bool Init(long h, unsigned char k);
-    void Read();
+    long GetFirst() const { return hryvna; }
+    unsigned char GetSecond() const { return kopek; }
+
+    void SetFirst(long first) { hryvna = first; }
+    bool SetSecond(unsigned char second);
+
+    bool Init(long hr, unsigned char kop);
     void Display() const;
+    void Read();
+    string toString() const;
 
-    Money Add(const Money &other) const;
-    Money Divide(const Money &other) const;
-    Money DivideByNumber(double number) const;
+    Money operator+(const Money &other) const;
+    double operator/(const Money &other) const;
+    Money operator/(double divisor) const;
 };
-
-#endif

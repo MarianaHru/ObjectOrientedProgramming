@@ -1,65 +1,102 @@
 #include "Money.h"
+#include <string>
+#include <sstream>
+#include <iomanip>
+#include <iostream>
 
-Money::Money() : hryvnias(0), kopecks(0) {}
+using namespace std;
 
-Money::Money(long h, unsigned char k)
+Money::Money(long hryvna, unsigned char kopek)
 {
-    if (!Init(h, k))
+    this->hryvna = hryvna;
+    this->kopek = kopek;
+}
+
+bool Money::SetSecond(unsigned char first)
+{
+    if (first < 100)
     {
-        hryvnias = 0;
-        kopecks = 0;
+        kopek = first;
+        return true;
+    }
+    else
+    {
+        cout << "Error, pennies cant be more than 99";
+        return false;
     }
 }
 
-bool Money::Init(long h, unsigned char k)
+bool Money::Init(long hr, unsigned char kop)
 {
-    hryvnias = h + k / 100;
-    kopecks = k % 100;
-    return true;
+    SetFirst(hr);
+    return SetSecond(kop);
 }
 
 void Money::Read()
 {
-    long h;
-    unsigned int k;
+    long hr;
+    unsigned char kop;
+    cout << "Write hryvnias: ";
+    cin >> hr;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    int temp_kop;
+
     do
     {
-        cout << "Input money amount (hryvnias kopecks): ";
-        cin >> h >> k;
-    } while (!Init(h, k));
+        cout << "Write pennies(0-99) ";
+        cin >> temp_kop;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        kop = static_cast<unsigned char>(temp_kop);
+    } while (!Init(hr, kop));
 }
 
 void Money::Display() const
 {
-    cout << hryvnias << "," << (int)kopecks << " UAH" << endl;
+    cout << toString() << endl;
 }
 
-Money Money::Add(const Money &other) const
+string Money::toString() const
 {
-    long totalKopecks = (hryvnias * 100 + kopecks) + (other.hryvnias * 100 + other.kopecks);
-    return Money(totalKopecks / 100, (unsigned char)(totalKopecks % 100));
-}
+    stringstream sout;
 
-Money Money::Divide(const Money &other) const
-{
-    double val1 = hryvnias + kopecks / 100.0;
-    double val2 = other.hryvnias + other.kopecks / 100.0;
-    if (val2 == 0)
+    sout << hryvna << ",";
+    if (kopek < 10)
     {
-        cout << "Division by zero error!" << endl;
-        return Money(0, 0);
+        sout << "0";
     }
-    double result = val1 / val2;
-    return Money(static_cast<long>(result), static_cast<unsigned char>((result - static_cast<long>(result)) * 100));
+    sout << (int)kopek << "grn";
+    return sout.str();
 }
 
-Money Money::DivideByNumber(double number) const
+Money Money::operator+(const Money &other) const
 {
-    if (number == 0)
+    long totalKop = (hryvna * 100 + kopek) + (other.hryvna * 100 + other.kopek);
+    return Money(totalKop / 100, totalKop % 100);
+}
+
+double Money::operator/(const Money &other) const
+{
+    if (other.hryvna == 0 && other.kopek == 0)
     {
-        cout << "Division by zero error!" << endl;
-        return Money(0, 0);
+
+        throw invalid_argument("cant be zero");
     }
-    double total = (hryvnias + kopecks / 100.0) / number;
-    return Money(static_cast<long>(total), static_cast<unsigned char>((total - static_cast<long>(total)) * 100));
+
+    double totalKop1 = hryvna * 100.0 + kopek;
+    double totalKop2 = other.hryvna * 100.0 + other.kopek;
+    double result = totalKop1 / totalKop2;
+
+    return result;
+}
+
+Money Money::operator/(double divisor) const
+{
+    if (divisor == 0)
+    {
+        throw std::invalid_argument("cant be zero!");
+    }
+
+    double totalKop = (hryvna * 100.0 + kopek) / divisor;
+    return Money((long)totalKop / 100, (unsigned char)((long)totalKop % 100));
 }

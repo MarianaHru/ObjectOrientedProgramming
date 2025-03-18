@@ -6,8 +6,8 @@ using namespace std;
 class Fraction
 {
 private:
-    int first;  // Чисельник (додатне число)
-    int second; // Знаменник (додатне число, не нуль)
+    int first;
+    int second;
 
 public:
     // Конструктор за замовчуванням
@@ -19,17 +19,14 @@ public:
     // Методи доступу
     int getFirst() const { return first; }
     int getSecond() const { return second; }
-    void setFirst(int value);
-    void setSecond(int value);
+    bool setFirst(int value);
+    bool setSecond(int value);
 
-    // Метод ініціалізації
     bool Init(int numerator, int denominator);
 
-    // Методи введення та виведення
     void Read();
     void Display() const;
 
-    // Метод виділення цілої частини дробу
     int ipart() const;
 };
 
