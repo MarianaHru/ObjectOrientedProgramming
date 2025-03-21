@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <sstream>
+
 using namespace std;
 
 class Alcohol
 {
-public: // <-- змінив на public
+public:
     class Liquid
     {
     private:
@@ -17,9 +19,11 @@ public: // <-- змінив на public
         double getDensity() const { return density; }
         void setName(string name) { this->name = name; }
         void setDensity(double density) { this->density = density; }
+
         void Init(string name, double density);
         void Display() const;
         void Read();
+        string toString() const;
     };
 
 private:
@@ -31,7 +35,9 @@ public:
     double getStrength() const { return strength; }
     void setLiquid(Liquid liquid) { this->liquid = liquid; }
     void setStrength(double strength) { this->strength = strength; }
+
     void Init(Liquid liquid, double strength);
     void Display() const;
     void Read();
+    string toString() const;
 };

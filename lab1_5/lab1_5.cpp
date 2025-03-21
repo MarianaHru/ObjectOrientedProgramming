@@ -1,3 +1,5 @@
+
+// main.cpp
 #include "Alcohol.h"
 
 #ifndef UNIT_TESTING
@@ -13,6 +15,20 @@ int main()
     Alcohol a2;
     a2.Init(l1, 40.0);
     a2.Display();
+
+    // Масив об'єктів
+    Alcohol drinks[3];
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "Enter details for drink " << i + 1 << ":\n";
+        drinks[i].Read();
+    }
+
+    cout << "\nAlcohol list:" << endl;
+    for (const auto &drink : drinks)
+    {
+        drink.Display();
+    }
 
     return 0;
 }

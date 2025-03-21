@@ -1,4 +1,5 @@
 
+// Alcohol.cpp
 #include "Alcohol.h"
 
 void Alcohol::Init(Liquid liquid, double strength)
@@ -7,11 +8,14 @@ void Alcohol::Init(Liquid liquid, double strength)
     setStrength(strength);
 }
 
+string Alcohol::toString() const
+{
+    return liquid.toString() + " | Strength: " + to_string(strength) + "%";
+}
+
 void Alcohol::Display() const
 {
-    cout << "Alcohol details:" << endl;
-    liquid.Display();
-    cout << "Strength: " << strength << "%" << endl;
+    cout << toString() << endl;
 }
 
 void Alcohol::Read()

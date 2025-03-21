@@ -1,4 +1,5 @@
 
+// Alcohol.h
 #pragma once
 #include "Liquid.h"
 
@@ -16,4 +17,5 @@ public:
     void Init(Liquid liquid, double strength);
     void Display() const;
     void Read();
+    string toString() const;
 };

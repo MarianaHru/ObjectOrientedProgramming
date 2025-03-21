@@ -9,7 +9,7 @@ void Alcohol::Liquid::Init(string name, double density)
 
 void Alcohol::Liquid::Display() const
 {
-    cout << "Liquid: " << name << " | Density: " << density << endl;
+    cout << toString() << endl;
 }
 
 void Alcohol::Liquid::Read()
@@ -23,6 +23,13 @@ void Alcohol::Liquid::Read()
     Init(name, density);
 }
 
+string Alcohol::Liquid::toString() const
+{
+    ostringstream oss;
+    oss << "Liquid: " << name << " | Density: " << density;
+    return oss.str();
+}
+
 // Реалізація методів класу Alcohol
 void Alcohol::Init(Liquid liquid, double strength)
 {
@@ -32,9 +39,7 @@ void Alcohol::Init(Liquid liquid, double strength)
 
 void Alcohol::Display() const
 {
-    cout << "Alcohol details:" << endl;
-    liquid.Display();
-    cout << "Strength: " << strength << "%" << endl;
+    cout << toString() << endl;
 }
 
 void Alcohol::Read()
@@ -46,4 +51,11 @@ void Alcohol::Read()
     cout << "Enter alcohol strength (%): ";
     cin >> strength;
     Init(liquid, strength);
+}
+
+string Alcohol::toString() const
+{
+    ostringstream oss;
+    oss << liquid.toString() << " | Strength: " << strength << "%";
+    return oss.str();
 }

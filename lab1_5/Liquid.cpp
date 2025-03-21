@@ -1,5 +1,19 @@
 
+// Liquid.cpp
 #include "Liquid.h"
+
+void Liquid::setDensity(double density)
+{
+    if (density < 0)
+    {
+        cout << "Density cannot be negative. Setting to 0." << endl;
+        this->density = 0;
+    }
+    else
+    {
+        this->density = density;
+    }
+}
 
 void Liquid::Init(string name, double density)
 {
@@ -7,9 +21,14 @@ void Liquid::Init(string name, double density)
     setDensity(density);
 }
 
+string Liquid::toString() const
+{
+    return "Liquid: " + name + " | Density: " + to_string(density);
+}
+
 void Liquid::Display() const
 {
-    cout << "Liquid: " << name << " | Density: " << density << endl;
+    cout << toString() << endl;
 }
 
 void Liquid::Read()

@@ -206,7 +206,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=lab1_6_unit_test
+CMAKE_PROJECT_NAME:STATIC=lab1_4_unit_test
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.14.0
@@ -381,6 +381,15 @@ lab1_3_unit_test_IS_TOP_LEVEL:STATIC=ON
 lab1_3_unit_test_SOURCE_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП
 
 //Value Computed by CMake
+lab1_4_unit_test_BINARY_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build
+
+//Value Computed by CMake
+lab1_4_unit_test_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+lab1_4_unit_test_SOURCE_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП
+
+//Value Computed by CMake
 lab1_5_unit_test_BINARY_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build
 
 //Value Computed by CMake
@@ -397,6 +406,24 @@ lab1_6_unit_test_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 lab1_6_unit_test_SOURCE_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП
+
+//Value Computed by CMake
+lab1_7_unit_test_BINARY_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build
+
+//Value Computed by CMake
+lab1_7_unit_test_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+lab1_7_unit_test_SOURCE_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП
+
+//Value Computed by CMake
+lab1_8_unit_test_BINARY_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build
+
+//Value Computed by CMake
+lab1_8_unit_test_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+lab1_8_unit_test_SOURCE_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП
 
 
 ########################

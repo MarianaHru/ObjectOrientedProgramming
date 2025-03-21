@@ -227,12 +227,12 @@ CMakeFiles/lab1_6_unit_test.dir/lab1_6/lab1_6_unit_test.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bit_reference \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/sstream \
   /Users/tarasgrudzinskij/Documents/vcpkg/installed/x64-osx/include/gtest/gtest.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/set \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__tree \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/optional \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/sstream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/vector \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__split_buffer \
   /Users/tarasgrudzinskij/Documents/vcpkg/installed/x64-osx/include/gtest/gtest-assertion-result.h \
