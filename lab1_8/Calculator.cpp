@@ -1,94 +1,75 @@
 // Calculator.cpp
-#include "Calculator.h"
-#include <sstream>
+#include "Fraction.h"
+#include <iostream>
+#include <limits>
 
-// Fraction реалізація
-Calculator::Fraction::Fraction() : integerPart(0), fractionalPart(0) {}
-Calculator::Fraction::Fraction(long long integer, unsigned short fractional) : integerPart(integer), fractionalPart(fractional) {}
+using namespace std;
 
-void Calculator::Fraction::Init(long long integer, unsigned short fractional)
+void Calculator::Init(long whole, unsigned char fr)
 {
-    integerPart = integer;
-    fractionalPart = fractional;
+    Fraction temp;
+    if (temp.Init(whole, fr))
+    {
+        SetFraction(temp);
+    }
 }
 
-void Calculator::Fraction::Read()
+void Calculator::Read()
 {
-    std::cout << "Enter integer part: ";
-    std::cin >> integerPart;
-    std::cout << "Enter fractional part: ";
-    std::cin >> fractionalPart;
+    Fraction temp;
+    temp.Read();
+    SetFraction(temp);
 }
 
-void Calculator::Fraction::Display() const
+void Calculator::Display()
 {
-    std::cout << integerPart << "." << fractionalPart << std::endl;
+    cout << toString() << endl;
 }
 
-std::string Calculator::Fraction::toString() const
+string Calculator::toString()
 {
-    std::ostringstream oss;
-    oss << integerPart << "." << fractionalPart;
-    return oss.str();
+    return fraction.toString();
 }
 
-long long Calculator::Fraction::GetIntegerPart() const { return integerPart; }
-unsigned short Calculator::Fraction::GetFractionalPart() const { return fractionalPart; }
-void Calculator::Fraction::SetIntegerPart(long long integer) { integerPart = integer; }
-void Calculator::Fraction::SetFractionalPart(unsigned short fractional) { fractionalPart = fractional; }
-
-Calculator::Fraction Calculator::Fraction::operator+(const Fraction &other) const
+// Реалізація арифметичних операторів
+Calculator Calculator::operator+(const Calculator &other) const
 {
-    return Fraction(integerPart + other.integerPart, fractionalPart + other.fractionalPart);
+    Calculator result;
+    result.SetFraction(this->fraction + other.fraction);
+    return result;
 }
 
-Calculator::Fraction Calculator::Fraction::operator-(const Fraction &other) const
+Calculator Calculator::operator-(const Calculator &other) const
 {
-    return Fraction(integerPart - other.integerPart, fractionalPart - other.fractionalPart);
+    Calculator result;
+    result.SetFraction(this->fraction - other.fraction);
+    return result;
 }
 
-Calculator::Fraction Calculator::Fraction::operator*(const Fraction &other) const
+Calculator Calculator::operator*(const Calculator &other) const
 {
-    return Fraction(integerPart * other.integerPart, fractionalPart * other.fractionalPart);
+    Calculator result;
+    result.SetFraction(this->fraction * other.fraction);
+    return result;
 }
 
-bool Calculator::Fraction::operator==(const Fraction &other) const
+// Реалізація операторів порівняння
+bool Calculator::operator==(const Calculator &other) const
 {
-    return integerPart == other.integerPart && fractionalPart == other.fractionalPart;
+    return this->fraction == other.fraction;
 }
 
-bool Calculator::Fraction::operator!=(const Fraction &other) const
+bool Calculator::operator!=(const Calculator &other) const
 {
-    return !(*this == other);
+    return this->fraction != other.fraction;
 }
 
-bool Calculator::Fraction::operator<(const Fraction &other) const
+bool Calculator::operator<(const Calculator &other) const
 {
-    return integerPart < other.integerPart || (integerPart == other.integerPart && fractionalPart < other.fractionalPart);
+    return this->fraction < other.fraction;
 }
 
-bool Calculator::Fraction::operator>(const Fraction &other) const
+bool Calculator::operator>(const Calculator &other) const
 {
-    return integerPart > other.integerPart || (integerPart == other.integerPart && fractionalPart > other.fractionalPart);
-}
-
-// Calculator реалізація
-Calculator::Fraction Calculator::Add(const Fraction &a, const Fraction &b)
-{
-    return a + b;
-}
-
-Calculator::Fraction Calculator::Subtract(const Fraction &a, const Fraction &b)
-{
-    return a - b;
-}
-
-Calculator::Fraction Calculator::Multiply(const Fraction &a, const Fraction &b)
-{
-    return a * b;
-}
-
-bool Calculator::Compare(const Fraction &a, const Fraction &b)
-{
-    return a == b;
+    return this->fraction > other.fraction;
 }

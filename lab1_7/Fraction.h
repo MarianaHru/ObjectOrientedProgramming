@@ -1,26 +1,28 @@
-// Fraction.h
 #pragma once
 #include <string>
-#include <iostream>
+#include <sstream>
+
+using namespace std;
 
 class Fraction
 {
 private:
-    long long integerPart;
-    unsigned short fractionalPart;
+    long whole;
+    unsigned char fr;
 
 public:
-    Fraction();
-    Fraction(long long integer, unsigned short fractional);
-    void Init(long long integer, unsigned short fractional);
-    void Read();
-    void Display() const;
-    std::string toString() const;
+    Fraction(long whole = 0, unsigned char fr = 0);
 
-    long long GetIntegerPart() const;
-    unsigned short GetFractionalPart() const;
-    void SetIntegerPart(long long integer);
-    void SetFractionalPart(unsigned short fractional);
+    long GetFirst() const { return whole; }
+    unsigned char GetSecond() const { return fr; }
+
+    void SetFirst(long first) { whole = first; }
+    bool SetSecond(unsigned char second);
+
+    bool Init(long wh, unsigned char fr);
+    void Display() const;
+    void Read();
+    string toString() const;
 
     Fraction operator+(const Fraction &other) const;
     Fraction operator-(const Fraction &other) const;

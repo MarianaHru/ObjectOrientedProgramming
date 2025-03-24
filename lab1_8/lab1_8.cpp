@@ -1,34 +1,47 @@
-#include "Calculator.h"
+// main.cpp
+#include "Fraction.h"
 #include <iostream>
 
+using namespace std;
 #ifndef UNIT_TESTING
-
 int main()
 {
-    Calculator::Fraction f1, f2;
-    f1.Read();
-    f2.Read();
+    Calculator calc1, calc2, result;
 
-    std::cout << "First fraction: ";
-    f1.Display();
-    std::cout << "Second fraction: ";
-    f2.Display();
+    cout << "Enter first fraction:" << endl;
+    calc1.Read();
 
-    Calculator::Fraction sum = Calculator::Add(f1, f2);
-    std::cout << "Sum: ";
-    sum.Display();
+    cout << "Enter second fraction:" << endl;
+    calc2.Read();
 
-    Calculator::Fraction difference = Calculator::Subtract(f1, f2);
-    std::cout << "Difference: ";
-    difference.Display();
+    cout << "\nFirst fraction: ";
+    calc1.Display();
 
-    Calculator::Fraction product = Calculator::Multiply(f1, f2);
-    std::cout << "Product: ";
-    product.Display();
+    cout << "Second fraction: ";
+    calc2.Display();
 
-    std::cout << "Comparison (Equal): " << (Calculator::Compare(f1, f2) ? "Yes" : "No") << std::endl;
+    // Додавання
+    result = calc1 + calc2;
+    cout << "Sum: ";
+    result.Display();
+
+    // Віднімання
+    result = calc1 - calc2;
+    cout << "Difference: ";
+    result.Display();
+
+    // Множення
+    result = calc1 * calc2;
+    cout << "Product: ";
+    result.Display();
+
+    // Порівняння
+    cout << "Comparison results:" << endl;
+    cout << "calc1 == calc2: " << (calc1 == calc2 ? "true" : "false") << endl;
+    cout << "calc1 != calc2: " << (calc1 != calc2 ? "true" : "false") << endl;
+    cout << "calc1 < calc2: " << (calc1 < calc2 ? "true" : "false") << endl;
+    cout << "calc1 > calc2: " << (calc1 > calc2 ? "true" : "false") << endl;
 
     return 0;
 }
-
 #endif

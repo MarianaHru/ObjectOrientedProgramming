@@ -1,35 +1,49 @@
-// main.cpp
-#include "Calculator.h"
 #include <iostream>
+#include <iomanip>
+#include "Calculator.h"
 
+using namespace std;
 #ifndef UNIT_TESTING
-
 int main()
 {
-    Fraction f1, f2;
-    f1.Read();
-    f2.Read();
+    Calculator n1, n2;
 
-    std::cout << "First fraction: ";
-    f1.Display();
-    std::cout << "Second fraction: ";
-    f2.Display();
+    n1.Read();
+    n1.Display();
+    cout << endl;
 
-    Fraction sum = Calculator::Add(f1, f2);
-    std::cout << "Sum: ";
-    sum.Display();
+    n2.Read();
+    n2.Display();
+    cout << endl;
 
-    Fraction difference = Calculator::Subtract(f1, f2);
-    std::cout << "Difference: ";
-    difference.Display();
+    Calculator sum = n1 + n2;
+    cout << "Sum: " << sum.toString() << endl;
 
-    Fraction product = Calculator::Multiply(f1, f2);
-    std::cout << "Product: ";
-    product.Display();
+    Calculator diff = n1 - n2;
+    cout << "Different: " << diff.toString() << endl;
 
-    std::cout << "Comparison (Equal): " << (Calculator::Compare(f1, f2) ? "Yes" : "No") << std::endl;
+    Calculator mult = n1 * n2;
+    cout << "Multiplication: " << mult.toString() << endl;
+
+    if (n1 == n2)
+    {
+        cout << "The numbers are equal" << endl;
+    }
+    else if (n1 != n2)
+    {
+        cout << "The numbers aren't equal" << endl;
+    }
+
+    if (n1 < n2)
+    {
+        cout << "The first number is less than second" << endl;
+    }
+
+    if (n1 > n2)
+    {
+        cout << "The second number is greater than second";
+    }
 
     return 0;
 }
-
 #endif
