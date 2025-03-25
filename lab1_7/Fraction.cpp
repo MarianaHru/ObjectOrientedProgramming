@@ -121,3 +121,13 @@ bool Fraction::operator>(const Fraction &other) const
     long total2 = other.whole * 100 + other.fr;
     return total1 > total2;
 }
+
+bool Fraction::operator<=(const Fraction &other) const
+{
+    return !(*this <= other);
+}
+
+bool Fraction::operator>=(const Fraction &other) const
+{
+    return !(*this >= other);
+}

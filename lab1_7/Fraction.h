@@ -31,4 +31,6 @@ public:
     bool operator!=(const Fraction &other) const;
     bool operator<(const Fraction &other) const;
     bool operator>(const Fraction &other) const;
+    bool operator<=(const Fraction &other) const;
+    bool operator>=(const Fraction &other) const;
 };

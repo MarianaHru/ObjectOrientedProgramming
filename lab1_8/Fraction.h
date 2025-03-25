@@ -30,6 +30,8 @@ public:
         bool operator!=(const Fraction &other) const;
         bool operator<(const Fraction &other) const;
         bool operator>(const Fraction &other) const;
+        bool operator<=(const Fraction &other) const;
+        bool operator>=(const Fraction &other) const;
     };
 
 private:
@@ -49,4 +51,6 @@ public:
     bool operator!=(const Calculator &other) const;
     bool operator<(const Calculator &other) const;
     bool operator>(const Calculator &other) const;
+    bool operator<=(const Calculator &other) const;
+    bool operator>=(const Calculator &other) const;
 };

@@ -73,3 +73,13 @@ bool Calculator::operator>(const Calculator &other) const
 {
     return this->fraction > other.fraction;
 }
+
+bool Calculator::operator<=(const Calculator &other) const
+{
+    return this->fraction <= other.fraction;
+}
+
+bool Calculator::operator>=(const Calculator &other) const
+{
+    return this->fraction >= other.fraction;
+}

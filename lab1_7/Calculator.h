@@ -22,4 +22,6 @@ public:
     bool operator!=(const Calculator &other) const;
     bool operator<(const Calculator &other) const;
     bool operator>(const Calculator &other) const;
+    bool operator<=(const Calculator &other) const;
+    bool operator>=(const Calculator &other) const;
 };

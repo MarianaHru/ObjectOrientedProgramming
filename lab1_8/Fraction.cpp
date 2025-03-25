@@ -81,3 +81,12 @@ bool Calculator::Fraction::operator>(const Fraction &other) const
 {
     return other < *this;
 }
+
+bool Calculator::Fraction::operator<=(const Fraction &other) const
+{
+    return whole < other.whole || (whole == other.whole && fr < other.fr);
+}
+bool Calculator::Fraction::operator>=(const Fraction &other) const
+{
+    return other < *this;
+}
