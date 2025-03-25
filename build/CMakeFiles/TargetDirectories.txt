@@ -1,0 +1,4 @@
+/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/CMakeFiles/lab2_1_unit_test.dir
+/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/CMakeFiles/test.dir
+/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/CMakeFiles/edit_cache.dir
+/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/CMakeFiles/rebuild_cache.dir
