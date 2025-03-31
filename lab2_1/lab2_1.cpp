@@ -23,7 +23,7 @@ int main()
     std::cout << "Префіксний декремент f2: " << --f2 << std::endl;
     std::cout << "Постфіксний декремент f2: " << f2-- << std::endl;
 
-    std::string strF2 = f2.toString();
+    std::string strF2 = static_cast<std::string>(f2);
     std::cout << "f2 у рядковому вигляді: " << strF2 << std::endl;
 
     return 0;

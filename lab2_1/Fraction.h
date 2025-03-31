@@ -22,17 +22,11 @@ public:
     void setFirst(int f);
     void setSecond(int s);
 
-    // Ініціалізація
     void Init(int f, int s);
 
-    // Введення та виведення
-    void Read();
-    void Display() const;
+    // Оператор приведення до рядка
+    operator std::string() const;
 
-    // Приведення до рядка
-    std::string toString() const;
-
-    // Оператор присвоєння
     Fraction &operator=(const Fraction &other);
 
     // Оператори інкременту та декременту
@@ -46,7 +40,6 @@ public:
     friend std::istream &operator>>(std::istream &in, Fraction &f);
 };
 
-// **Оголошення makeFraction тут**
 Fraction makeFraction(int f, int s);
 
 #endif

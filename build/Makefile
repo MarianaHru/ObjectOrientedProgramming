@@ -127,65 +127,211 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab2_1_unit_test
+# Target rules for targets named lab2_3_unit_test
 
 # Build rule for target.
-lab2_1_unit_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2_1_unit_test
-.PHONY : lab2_1_unit_test
+lab2_3_unit_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2_3_unit_test
+.PHONY : lab2_3_unit_test
 
 # fast build rule for target.
-lab2_1_unit_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_1_unit_test.dir/build.make CMakeFiles/lab2_1_unit_test.dir/build
-.PHONY : lab2_1_unit_test/fast
+lab2_3_unit_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_3_unit_test.dir/build.make CMakeFiles/lab2_3_unit_test.dir/build
+.PHONY : lab2_3_unit_test/fast
 
-lab2_1/Fraction.o: lab2_1/Fraction.cpp.o
-.PHONY : lab2_1/Fraction.o
+#=============================================================================
+# Target rules for targets named lab2_5_unit_test
+
+# Build rule for target.
+lab2_5_unit_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2_5_unit_test
+.PHONY : lab2_5_unit_test
+
+# fast build rule for target.
+lab2_5_unit_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/build
+.PHONY : lab2_5_unit_test/fast
+
+#=============================================================================
+# Target rules for targets named lab2_6_unit_test
+
+# Build rule for target.
+lab2_6_unit_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2_6_unit_test
+.PHONY : lab2_6_unit_test
+
+# fast build rule for target.
+lab2_6_unit_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_6_unit_test.dir/build.make CMakeFiles/lab2_6_unit_test.dir/build
+.PHONY : lab2_6_unit_test/fast
+
+lab2_3/Money.o: lab2_3/Money.cpp.o
+.PHONY : lab2_3/Money.o
 
 # target to build an object file
-lab2_1/Fraction.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_1_unit_test.dir/build.make CMakeFiles/lab2_1_unit_test.dir/lab2_1/Fraction.cpp.o
-.PHONY : lab2_1/Fraction.cpp.o
+lab2_3/Money.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_3_unit_test.dir/build.make CMakeFiles/lab2_3_unit_test.dir/lab2_3/Money.cpp.o
+.PHONY : lab2_3/Money.cpp.o
 
-lab2_1/Fraction.i: lab2_1/Fraction.cpp.i
-.PHONY : lab2_1/Fraction.i
+lab2_3/Money.i: lab2_3/Money.cpp.i
+.PHONY : lab2_3/Money.i
 
 # target to preprocess a source file
-lab2_1/Fraction.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_1_unit_test.dir/build.make CMakeFiles/lab2_1_unit_test.dir/lab2_1/Fraction.cpp.i
-.PHONY : lab2_1/Fraction.cpp.i
+lab2_3/Money.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_3_unit_test.dir/build.make CMakeFiles/lab2_3_unit_test.dir/lab2_3/Money.cpp.i
+.PHONY : lab2_3/Money.cpp.i
 
-lab2_1/Fraction.s: lab2_1/Fraction.cpp.s
-.PHONY : lab2_1/Fraction.s
+lab2_3/Money.s: lab2_3/Money.cpp.s
+.PHONY : lab2_3/Money.s
 
 # target to generate assembly for a file
-lab2_1/Fraction.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_1_unit_test.dir/build.make CMakeFiles/lab2_1_unit_test.dir/lab2_1/Fraction.cpp.s
-.PHONY : lab2_1/Fraction.cpp.s
+lab2_3/Money.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_3_unit_test.dir/build.make CMakeFiles/lab2_3_unit_test.dir/lab2_3/Money.cpp.s
+.PHONY : lab2_3/Money.cpp.s
 
-lab2_1/lab2_1_unit_test.o: lab2_1/lab2_1_unit_test.cpp.o
-.PHONY : lab2_1/lab2_1_unit_test.o
+lab2_3/lab2_3_unit_test.o: lab2_3/lab2_3_unit_test.cpp.o
+.PHONY : lab2_3/lab2_3_unit_test.o
 
 # target to build an object file
-lab2_1/lab2_1_unit_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_1_unit_test.dir/build.make CMakeFiles/lab2_1_unit_test.dir/lab2_1/lab2_1_unit_test.cpp.o
-.PHONY : lab2_1/lab2_1_unit_test.cpp.o
+lab2_3/lab2_3_unit_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_3_unit_test.dir/build.make CMakeFiles/lab2_3_unit_test.dir/lab2_3/lab2_3_unit_test.cpp.o
+.PHONY : lab2_3/lab2_3_unit_test.cpp.o
 
-lab2_1/lab2_1_unit_test.i: lab2_1/lab2_1_unit_test.cpp.i
-.PHONY : lab2_1/lab2_1_unit_test.i
+lab2_3/lab2_3_unit_test.i: lab2_3/lab2_3_unit_test.cpp.i
+.PHONY : lab2_3/lab2_3_unit_test.i
 
 # target to preprocess a source file
-lab2_1/lab2_1_unit_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_1_unit_test.dir/build.make CMakeFiles/lab2_1_unit_test.dir/lab2_1/lab2_1_unit_test.cpp.i
-.PHONY : lab2_1/lab2_1_unit_test.cpp.i
+lab2_3/lab2_3_unit_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_3_unit_test.dir/build.make CMakeFiles/lab2_3_unit_test.dir/lab2_3/lab2_3_unit_test.cpp.i
+.PHONY : lab2_3/lab2_3_unit_test.cpp.i
 
-lab2_1/lab2_1_unit_test.s: lab2_1/lab2_1_unit_test.cpp.s
-.PHONY : lab2_1/lab2_1_unit_test.s
+lab2_3/lab2_3_unit_test.s: lab2_3/lab2_3_unit_test.cpp.s
+.PHONY : lab2_3/lab2_3_unit_test.s
 
 # target to generate assembly for a file
-lab2_1/lab2_1_unit_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_1_unit_test.dir/build.make CMakeFiles/lab2_1_unit_test.dir/lab2_1/lab2_1_unit_test.cpp.s
-.PHONY : lab2_1/lab2_1_unit_test.cpp.s
+lab2_3/lab2_3_unit_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_3_unit_test.dir/build.make CMakeFiles/lab2_3_unit_test.dir/lab2_3/lab2_3_unit_test.cpp.s
+.PHONY : lab2_3/lab2_3_unit_test.cpp.s
+
+lab2_5/Alcohol.o: lab2_5/Alcohol.cpp.o
+.PHONY : lab2_5/Alcohol.o
+
+# target to build an object file
+lab2_5/Alcohol.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/lab2_5/Alcohol.cpp.o
+.PHONY : lab2_5/Alcohol.cpp.o
+
+lab2_5/Alcohol.i: lab2_5/Alcohol.cpp.i
+.PHONY : lab2_5/Alcohol.i
+
+# target to preprocess a source file
+lab2_5/Alcohol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/lab2_5/Alcohol.cpp.i
+.PHONY : lab2_5/Alcohol.cpp.i
+
+lab2_5/Alcohol.s: lab2_5/Alcohol.cpp.s
+.PHONY : lab2_5/Alcohol.s
+
+# target to generate assembly for a file
+lab2_5/Alcohol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/lab2_5/Alcohol.cpp.s
+.PHONY : lab2_5/Alcohol.cpp.s
+
+lab2_5/Liquid.o: lab2_5/Liquid.cpp.o
+.PHONY : lab2_5/Liquid.o
+
+# target to build an object file
+lab2_5/Liquid.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/lab2_5/Liquid.cpp.o
+.PHONY : lab2_5/Liquid.cpp.o
+
+lab2_5/Liquid.i: lab2_5/Liquid.cpp.i
+.PHONY : lab2_5/Liquid.i
+
+# target to preprocess a source file
+lab2_5/Liquid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/lab2_5/Liquid.cpp.i
+.PHONY : lab2_5/Liquid.cpp.i
+
+lab2_5/Liquid.s: lab2_5/Liquid.cpp.s
+.PHONY : lab2_5/Liquid.s
+
+# target to generate assembly for a file
+lab2_5/Liquid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/lab2_5/Liquid.cpp.s
+.PHONY : lab2_5/Liquid.cpp.s
+
+lab2_5/lab2_5_unit_test.o: lab2_5/lab2_5_unit_test.cpp.o
+.PHONY : lab2_5/lab2_5_unit_test.o
+
+# target to build an object file
+lab2_5/lab2_5_unit_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/lab2_5/lab2_5_unit_test.cpp.o
+.PHONY : lab2_5/lab2_5_unit_test.cpp.o
+
+lab2_5/lab2_5_unit_test.i: lab2_5/lab2_5_unit_test.cpp.i
+.PHONY : lab2_5/lab2_5_unit_test.i
+
+# target to preprocess a source file
+lab2_5/lab2_5_unit_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/lab2_5/lab2_5_unit_test.cpp.i
+.PHONY : lab2_5/lab2_5_unit_test.cpp.i
+
+lab2_5/lab2_5_unit_test.s: lab2_5/lab2_5_unit_test.cpp.s
+.PHONY : lab2_5/lab2_5_unit_test.s
+
+# target to generate assembly for a file
+lab2_5/lab2_5_unit_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_5_unit_test.dir/build.make CMakeFiles/lab2_5_unit_test.dir/lab2_5/lab2_5_unit_test.cpp.s
+.PHONY : lab2_5/lab2_5_unit_test.cpp.s
+
+lab2_6/Alcohol.o: lab2_6/Alcohol.cpp.o
+.PHONY : lab2_6/Alcohol.o
+
+# target to build an object file
+lab2_6/Alcohol.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_6_unit_test.dir/build.make CMakeFiles/lab2_6_unit_test.dir/lab2_6/Alcohol.cpp.o
+.PHONY : lab2_6/Alcohol.cpp.o
+
+lab2_6/Alcohol.i: lab2_6/Alcohol.cpp.i
+.PHONY : lab2_6/Alcohol.i
+
+# target to preprocess a source file
+lab2_6/Alcohol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_6_unit_test.dir/build.make CMakeFiles/lab2_6_unit_test.dir/lab2_6/Alcohol.cpp.i
+.PHONY : lab2_6/Alcohol.cpp.i
+
+lab2_6/Alcohol.s: lab2_6/Alcohol.cpp.s
+.PHONY : lab2_6/Alcohol.s
+
+# target to generate assembly for a file
+lab2_6/Alcohol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_6_unit_test.dir/build.make CMakeFiles/lab2_6_unit_test.dir/lab2_6/Alcohol.cpp.s
+.PHONY : lab2_6/Alcohol.cpp.s
+
+lab2_6/lab2_6_unit_test.o: lab2_6/lab2_6_unit_test.cpp.o
+.PHONY : lab2_6/lab2_6_unit_test.o
+
+# target to build an object file
+lab2_6/lab2_6_unit_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_6_unit_test.dir/build.make CMakeFiles/lab2_6_unit_test.dir/lab2_6/lab2_6_unit_test.cpp.o
+.PHONY : lab2_6/lab2_6_unit_test.cpp.o
+
+lab2_6/lab2_6_unit_test.i: lab2_6/lab2_6_unit_test.cpp.i
+.PHONY : lab2_6/lab2_6_unit_test.i
+
+# target to preprocess a source file
+lab2_6/lab2_6_unit_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_6_unit_test.dir/build.make CMakeFiles/lab2_6_unit_test.dir/lab2_6/lab2_6_unit_test.cpp.i
+.PHONY : lab2_6/lab2_6_unit_test.cpp.i
+
+lab2_6/lab2_6_unit_test.s: lab2_6/lab2_6_unit_test.cpp.s
+.PHONY : lab2_6/lab2_6_unit_test.s
+
+# target to generate assembly for a file
+lab2_6/lab2_6_unit_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_6_unit_test.dir/build.make CMakeFiles/lab2_6_unit_test.dir/lab2_6/lab2_6_unit_test.cpp.s
+.PHONY : lab2_6/lab2_6_unit_test.cpp.s
 
 # Help Target
 help:
@@ -196,13 +342,30 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... lab2_1_unit_test"
-	@echo "... lab2_1/Fraction.o"
-	@echo "... lab2_1/Fraction.i"
-	@echo "... lab2_1/Fraction.s"
-	@echo "... lab2_1/lab2_1_unit_test.o"
-	@echo "... lab2_1/lab2_1_unit_test.i"
-	@echo "... lab2_1/lab2_1_unit_test.s"
+	@echo "... lab2_3_unit_test"
+	@echo "... lab2_5_unit_test"
+	@echo "... lab2_6_unit_test"
+	@echo "... lab2_3/Money.o"
+	@echo "... lab2_3/Money.i"
+	@echo "... lab2_3/Money.s"
+	@echo "... lab2_3/lab2_3_unit_test.o"
+	@echo "... lab2_3/lab2_3_unit_test.i"
+	@echo "... lab2_3/lab2_3_unit_test.s"
+	@echo "... lab2_5/Alcohol.o"
+	@echo "... lab2_5/Alcohol.i"
+	@echo "... lab2_5/Alcohol.s"
+	@echo "... lab2_5/Liquid.o"
+	@echo "... lab2_5/Liquid.i"
+	@echo "... lab2_5/Liquid.s"
+	@echo "... lab2_5/lab2_5_unit_test.o"
+	@echo "... lab2_5/lab2_5_unit_test.i"
+	@echo "... lab2_5/lab2_5_unit_test.s"
+	@echo "... lab2_6/Alcohol.o"
+	@echo "... lab2_6/Alcohol.i"
+	@echo "... lab2_6/Alcohol.s"
+	@echo "... lab2_6/lab2_6_unit_test.o"
+	@echo "... lab2_6/lab2_6_unit_test.i"
+	@echo "... lab2_6/lab2_6_unit_test.s"
 .PHONY : help
 
 

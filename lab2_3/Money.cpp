@@ -31,52 +31,93 @@ bool Money::SetKopek(unsigned char k)
 
 ostream &operator<<(ostream &out, const Money &m)
 {
-    out << m.hryvna << ",";
-    out << setw(2) << setfill('0') << static_cast<int>(m.kopek) << " UAH";
+    out << m.toString();
     return out;
 }
 
 istream &operator>>(istream &in, Money &m)
 {
-    cout << "Enter hryvnia: ";
-    in >> m.hryvna;
-
-    int tempKopek;
-    do
+    string input;
+    getline(in, input);
+    try
     {
-        cout << "Enter kopeks (0-99): ";
-        in >> tempKopek;
-    } while (!m.SetKopek(static_cast<unsigned char>(tempKopek)));
-
+        m.fromString(input);
+    }
+    catch (const invalid_argument &e)
+    {
+        cerr << "Error: " << e.what() << endl;
+        in.setstate(ios::failbit);
+    }
     return in;
 }
 
-Money Money::operator+(const Money &other) const
+string Money::toString() const
 {
-    long totalKopeks = (hryvna * 100 + kopek) + (other.hryvna * 100 + other.kopek);
+    stringstream sout;
+    sout << hryvna << "," << setw(2) << setfill('0') << static_cast<int>(kopek) << " UAH";
+    return sout.str();
+}
+
+// void Money::fromString(const string &s)
+// {
+//     stringstream sin(s);
+//     char comma;
+//     sin >> hryvna >> comma >> kopek;
+// }
+
+void Money::fromString(const string &s)
+{
+    stringstream sin(s);
+    char comma;
+    int kop;
+    string currency;
+
+    if (!(sin >> hryvna >> comma >> kop))
+    {
+        throw invalid_argument("Invalid numeric format");
+    }
+
+    if (sin >> currency)
+    {
+        if (currency != "UAH")
+        {
+            cerr << "Parsed currency: " << currency << endl;
+            throw invalid_argument("Invalid currency format");
+        }
+    }
+
+    if (!SetKopek(static_cast<unsigned char>(kop)))
+    {
+        throw invalid_argument("Invalid kopek value");
+    }
+}
+
+Money operator+(const Money &m1, const Money &m2)
+{
+    long totalKopeks = (m1.hryvna * 100 + m1.kopek) + (m2.hryvna * 100 + m2.kopek);
     return Money(totalKopeks / 100, totalKopeks % 100);
 }
 
-double Money::operator/(const Money &other) const
+double operator/(const Money &m1, const Money &m2)
 {
-    if (other.hryvna == 0 && other.kopek == 0)
+    if (m2.hryvna == 0 && m2.kopek == 0)
     {
         throw invalid_argument("Division by zero!");
     }
 
-    double total1 = hryvna * 100.0 + kopek;
-    double total2 = other.hryvna * 100.0 + other.kopek;
+    double total1 = m1.hryvna * 100.0 + m1.kopek;
+    double total2 = m2.hryvna * 100.0 + m2.kopek;
     return total1 / total2;
 }
 
-Money Money::operator/(double divisor) const
+Money operator/(const Money &m, double divisor)
 {
     if (divisor == 0)
     {
         throw invalid_argument("Division by zero!");
     }
 
-    double totalKopeks = (hryvna * 100.0 + kopek) / divisor;
+    double totalKopeks = (m.hryvna * 100.0 + m.kopek) / divisor;
     return Money(static_cast<long>(totalKopeks) / 100, static_cast<unsigned char>(static_cast<long>(totalKopeks) % 100));
 }
 
@@ -116,9 +157,23 @@ Money Money::operator--(int)
     return temp;
 }
 
-Money::operator string() const
+bool Money::operator==(const Money &other) const
 {
-    stringstream sout;
-    sout << hryvna << "," << setw(2) << setfill('0') << static_cast<int>(kopek) << " UAH";
-    return sout.str();
+    return (hryvna == other.hryvna) && (kopek == other.kopek);
+}
+
+bool Money::operator!=(const Money &other) const
+{
+    return !(*this == other);
+}
+
+Money &Money::operator=(const Money &other)
+{
+    if (this == &other)
+    {
+        return *this;
+    }
+    hryvna = other.hryvna;
+    kopek = other.kopek;
+    return *this;
 }
