@@ -10,3 +10,5 @@ add_test(Lab2_5_UnitTests "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/
 set_tests_properties(Lab2_5_UnitTests PROPERTIES  _BACKTRACE_TRIPLES "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;111;add_test;/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;0;")
 add_test(Lab2_6_UnitTests "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/lab2_6_unit_test")
 set_tests_properties(Lab2_6_UnitTests PROPERTIES  _BACKTRACE_TRIPLES "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;147;add_test;/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;0;")
+add_test(Lab2_4_UnitTests "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/lab2_4_unit_test")
+set_tests_properties(Lab2_4_UnitTests PROPERTIES  _BACKTRACE_TRIPLES "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;183;add_test;/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;0;")

@@ -2,7 +2,7 @@
 #include "Liquid.h"
 
 Liquid::Liquid() : name("Unknown"), density(0.0) {}
-Liquid::Liquid(string name, double density) : name(name), density(density) {}
+Liquid::Liquid(string name, double density) : name(name), density(density < 0 ? 0 : density) {}
 Liquid::Liquid(const Liquid &other) : name(other.name), density(other.density) {}
 
 Liquid &Liquid::operator=(const Liquid &other)
@@ -10,7 +10,7 @@ Liquid &Liquid::operator=(const Liquid &other)
     if (this != &other)
     {
         name = other.name;
-        density = other.density;
+        density = (other.density < 0) ? 0 : other.density;
     }
     return *this;
 }
@@ -18,7 +18,7 @@ Liquid &Liquid::operator=(const Liquid &other)
 void Liquid::Init(string name, double density)
 {
     this->name = name;
-    this->density = density;
+    this->density = (density >= 0) ? density : 0;
 }
 
 void Liquid::Read()
@@ -27,6 +27,7 @@ void Liquid::Read()
     cin >> name;
     cout << "Enter density: ";
     cin >> density;
+    setDensity(density);
 }
 
 void Liquid::Display() const

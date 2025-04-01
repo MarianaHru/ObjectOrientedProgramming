@@ -1,16 +1,17 @@
+
 // Alcohol.cpp
 #include "Alcohol.h"
 
 Alcohol::Alcohol() : liquid(), strength(0.0) {}
-Alcohol::Alcohol(Liquid liquid, double strength) : liquid(liquid), strength(strength) {}
-Alcohol::Alcohol(const Alcohol &other) : liquid(other.liquid), strength(other.strength) {}
+Alcohol::Alcohol(Liquid liquid, double strength) : liquid(liquid), strength(strength < 0 ? 0 : strength) {}
+Alcohol::Alcohol(const Alcohol &other) : liquid(other.liquid), strength(other.strength < 0 ? 0 : other.strength) {}
 
 Alcohol &Alcohol::operator=(const Alcohol &other)
 {
     if (this != &other)
     {
         liquid = other.liquid;
-        strength = other.strength;
+        strength = (other.strength < 0) ? 0 : other.strength;
     }
     return *this;
 }
@@ -19,6 +20,7 @@ void Alcohol::Init(string spec, Liquid liquid)
 {
     this->liquid = liquid;
     this->strength = stod(spec);
+    setStrength(this->strength);
 }
 
 void Alcohol::Read()
@@ -58,7 +60,7 @@ istream &operator>>(istream &in, Alcohol &a)
 
 void Alcohol::setStrength(double strength)
 {
-    this->strength = strength;
+    this->strength = (strength >= 0) ? strength : 0;
 }
 
 Alcohol::operator string() const

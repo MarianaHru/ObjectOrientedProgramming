@@ -6,13 +6,13 @@ int Alcohol::counter = 0;
 
 // Реалізація методів класу Liquid
 Alcohol::Liquid::Liquid() : name(""), density(0) { counter++; }
-Alcohol::Liquid::Liquid(string name, double density) : name(name), density(density) { counter++; }
-Alcohol::Liquid::Liquid(const Liquid &l) : name(l.name), density(l.density) { counter++; }
+Alcohol::Liquid::Liquid(string name, double density) : name(name), density(density < 0 ? 0 : density) { counter++; }
+Alcohol::Liquid::Liquid(const Liquid &l) : name(l.name), density(l.density < 0 ? 0 : l.density) { counter++; }
 Alcohol::Liquid::~Liquid() { counter--; }
 Alcohol::Liquid &Alcohol::Liquid::operator=(const Liquid &l)
 {
     name = l.name;
-    density = l.density;
+    density = (l.density < 0) ? 0 : l.density;
     return *this;
 }
 void Alcohol::Liquid::Display() const { cout << string(*this) << endl; }
@@ -22,6 +22,7 @@ void Alcohol::Liquid::Read()
     cin >> name;
     cout << "Enter density: ";
     cin >> density;
+    density = (density < 0) ? 0 : density;
 }
 Alcohol::Liquid::operator string() const
 {
@@ -43,18 +44,19 @@ istream &operator>>(istream &in, Alcohol::Liquid &l)
     in >> l.name;
     cout << "Enter density: ";
     in >> l.density;
+    l.density = (l.density < 0) ? 0 : l.density;
     return in;
 }
 
 // Реалізація методів класу Alcohol
 Alcohol::Alcohol() : liquid(), strength(0) { counter++; }
-Alcohol::Alcohol(string name, double density, double strength) : liquid(name, density), strength(strength) { counter++; }
-Alcohol::Alcohol(const Alcohol &a) : liquid(a.liquid), strength(a.strength) { counter++; }
+Alcohol::Alcohol(string name, double density, double strength) : liquid(name, density), strength(strength < 0 ? 0 : strength) { counter++; }
+Alcohol::Alcohol(const Alcohol &a) : liquid(a.liquid), strength(a.strength < 0 ? 0 : a.strength) { counter++; }
 Alcohol::~Alcohol() { counter--; }
 Alcohol &Alcohol::operator=(const Alcohol &a)
 {
     liquid = a.liquid;
-    strength = a.strength;
+    strength = (a.strength < 0) ? 0 : a.strength;
     return *this;
 }
 void Alcohol::Display() const { cout << string(*this) << endl; }
@@ -64,6 +66,7 @@ void Alcohol::Read()
     cin >> liquid;
     cout << "strength = ? ";
     cin >> strength;
+    strength = (strength < 0) ? 0 : strength;
 }
 Alcohol::operator string() const
 {
@@ -98,7 +101,7 @@ int Alcohol::getCounter() { return counter; }
 void Alcohol::Init(string name, double density, double strength)
 {
     liquid = Liquid(name, density);
-    this->strength = strength;
+    this->strength = (strength < 0) ? 0 : strength;
 }
 
 ostream &operator<<(ostream &out, const Alcohol &a)
@@ -113,5 +116,6 @@ istream &operator>>(istream &in, Alcohol &a)
     in >> a.liquid;
     cout << "strength = ? ";
     in >> a.strength;
+    a.strength = (a.strength < 0) ? 0 : a.strength;
     return in;
 }

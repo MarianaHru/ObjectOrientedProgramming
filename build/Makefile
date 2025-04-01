@@ -165,6 +165,19 @@ lab2_6_unit_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_6_unit_test.dir/build.make CMakeFiles/lab2_6_unit_test.dir/build
 .PHONY : lab2_6_unit_test/fast
 
+#=============================================================================
+# Target rules for targets named lab2_4_unit_test
+
+# Build rule for target.
+lab2_4_unit_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2_4_unit_test
+.PHONY : lab2_4_unit_test
+
+# fast build rule for target.
+lab2_4_unit_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_4_unit_test.dir/build.make CMakeFiles/lab2_4_unit_test.dir/build
+.PHONY : lab2_4_unit_test/fast
+
 lab2_3/Money.o: lab2_3/Money.cpp.o
 .PHONY : lab2_3/Money.o
 
@@ -212,6 +225,54 @@ lab2_3/lab2_3_unit_test.s: lab2_3/lab2_3_unit_test.cpp.s
 lab2_3/lab2_3_unit_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_3_unit_test.dir/build.make CMakeFiles/lab2_3_unit_test.dir/lab2_3/lab2_3_unit_test.cpp.s
 .PHONY : lab2_3/lab2_3_unit_test.cpp.s
+
+lab2_4/Vector.o: lab2_4/Vector.cpp.o
+.PHONY : lab2_4/Vector.o
+
+# target to build an object file
+lab2_4/Vector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_4_unit_test.dir/build.make CMakeFiles/lab2_4_unit_test.dir/lab2_4/Vector.cpp.o
+.PHONY : lab2_4/Vector.cpp.o
+
+lab2_4/Vector.i: lab2_4/Vector.cpp.i
+.PHONY : lab2_4/Vector.i
+
+# target to preprocess a source file
+lab2_4/Vector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_4_unit_test.dir/build.make CMakeFiles/lab2_4_unit_test.dir/lab2_4/Vector.cpp.i
+.PHONY : lab2_4/Vector.cpp.i
+
+lab2_4/Vector.s: lab2_4/Vector.cpp.s
+.PHONY : lab2_4/Vector.s
+
+# target to generate assembly for a file
+lab2_4/Vector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_4_unit_test.dir/build.make CMakeFiles/lab2_4_unit_test.dir/lab2_4/Vector.cpp.s
+.PHONY : lab2_4/Vector.cpp.s
+
+lab2_4/lab2_4_unit_test.o: lab2_4/lab2_4_unit_test.cpp.o
+.PHONY : lab2_4/lab2_4_unit_test.o
+
+# target to build an object file
+lab2_4/lab2_4_unit_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_4_unit_test.dir/build.make CMakeFiles/lab2_4_unit_test.dir/lab2_4/lab2_4_unit_test.cpp.o
+.PHONY : lab2_4/lab2_4_unit_test.cpp.o
+
+lab2_4/lab2_4_unit_test.i: lab2_4/lab2_4_unit_test.cpp.i
+.PHONY : lab2_4/lab2_4_unit_test.i
+
+# target to preprocess a source file
+lab2_4/lab2_4_unit_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_4_unit_test.dir/build.make CMakeFiles/lab2_4_unit_test.dir/lab2_4/lab2_4_unit_test.cpp.i
+.PHONY : lab2_4/lab2_4_unit_test.cpp.i
+
+lab2_4/lab2_4_unit_test.s: lab2_4/lab2_4_unit_test.cpp.s
+.PHONY : lab2_4/lab2_4_unit_test.s
+
+# target to generate assembly for a file
+lab2_4/lab2_4_unit_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_4_unit_test.dir/build.make CMakeFiles/lab2_4_unit_test.dir/lab2_4/lab2_4_unit_test.cpp.s
+.PHONY : lab2_4/lab2_4_unit_test.cpp.s
 
 lab2_5/Alcohol.o: lab2_5/Alcohol.cpp.o
 .PHONY : lab2_5/Alcohol.o
@@ -343,6 +404,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... lab2_3_unit_test"
+	@echo "... lab2_4_unit_test"
 	@echo "... lab2_5_unit_test"
 	@echo "... lab2_6_unit_test"
 	@echo "... lab2_3/Money.o"
@@ -351,6 +413,12 @@ help:
 	@echo "... lab2_3/lab2_3_unit_test.o"
 	@echo "... lab2_3/lab2_3_unit_test.i"
 	@echo "... lab2_3/lab2_3_unit_test.s"
+	@echo "... lab2_4/Vector.o"
+	@echo "... lab2_4/Vector.i"
+	@echo "... lab2_4/Vector.s"
+	@echo "... lab2_4/lab2_4_unit_test.o"
+	@echo "... lab2_4/lab2_4_unit_test.i"
+	@echo "... lab2_4/lab2_4_unit_test.s"
 	@echo "... lab2_5/Alcohol.o"
 	@echo "... lab2_5/Alcohol.i"
 	@echo "... lab2_5/Alcohol.s"

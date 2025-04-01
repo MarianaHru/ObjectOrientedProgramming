@@ -1,3 +1,4 @@
+// Заголовочний файл Alcohol.h
 #pragma once
 #include <iostream>
 #include <string>
