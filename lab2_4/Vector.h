@@ -23,6 +23,11 @@ public:
     void SetDate(int *d) { date = d; }
     bool SetSize(int s);
 
+    int operator[](int index) const;
+
+    Vector &operator=(const Vector &other);
+    friend bool operator!=(const Vector &v1, const Vector &v2);
+
     operator string() const;
     friend ostream &operator<<(ostream &, const Vector &);
     friend istream &operator>>(istream &, Vector &);
