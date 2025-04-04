@@ -34,5 +34,6 @@ public:
 
     friend Vector operator*(const Vector &vec, int scalar);
     friend bool operator==(const Vector &lhs, const Vector &rhs);
+    friend bool operator!=(const Vector &lhs, const Vector &rhs);
     friend double norm(const Vector &vec);
 };

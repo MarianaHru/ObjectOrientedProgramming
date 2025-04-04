@@ -178,6 +178,32 @@ lab2_4_unit_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_4_unit_test.dir/build.make CMakeFiles/lab2_4_unit_test.dir/build
 .PHONY : lab2_4_unit_test/fast
 
+#=============================================================================
+# Target rules for targets named lab2_7_unit_test
+
+# Build rule for target.
+lab2_7_unit_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2_7_unit_test
+.PHONY : lab2_7_unit_test
+
+# fast build rule for target.
+lab2_7_unit_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/build
+.PHONY : lab2_7_unit_test/fast
+
+#=============================================================================
+# Target rules for targets named lab2_8_unit_test
+
+# Build rule for target.
+lab2_8_unit_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2_8_unit_test
+.PHONY : lab2_8_unit_test
+
+# fast build rule for target.
+lab2_8_unit_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_8_unit_test.dir/build.make CMakeFiles/lab2_8_unit_test.dir/build
+.PHONY : lab2_8_unit_test/fast
+
 lab2_3/Money.o: lab2_3/Money.cpp.o
 .PHONY : lab2_3/Money.o
 
@@ -394,6 +420,126 @@ lab2_6/lab2_6_unit_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_6_unit_test.dir/build.make CMakeFiles/lab2_6_unit_test.dir/lab2_6/lab2_6_unit_test.cpp.s
 .PHONY : lab2_6/lab2_6_unit_test.cpp.s
 
+lab2_7/Calculator.o: lab2_7/Calculator.cpp.o
+.PHONY : lab2_7/Calculator.o
+
+# target to build an object file
+lab2_7/Calculator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/lab2_7/Calculator.cpp.o
+.PHONY : lab2_7/Calculator.cpp.o
+
+lab2_7/Calculator.i: lab2_7/Calculator.cpp.i
+.PHONY : lab2_7/Calculator.i
+
+# target to preprocess a source file
+lab2_7/Calculator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/lab2_7/Calculator.cpp.i
+.PHONY : lab2_7/Calculator.cpp.i
+
+lab2_7/Calculator.s: lab2_7/Calculator.cpp.s
+.PHONY : lab2_7/Calculator.s
+
+# target to generate assembly for a file
+lab2_7/Calculator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/lab2_7/Calculator.cpp.s
+.PHONY : lab2_7/Calculator.cpp.s
+
+lab2_7/Fraction.o: lab2_7/Fraction.cpp.o
+.PHONY : lab2_7/Fraction.o
+
+# target to build an object file
+lab2_7/Fraction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/lab2_7/Fraction.cpp.o
+.PHONY : lab2_7/Fraction.cpp.o
+
+lab2_7/Fraction.i: lab2_7/Fraction.cpp.i
+.PHONY : lab2_7/Fraction.i
+
+# target to preprocess a source file
+lab2_7/Fraction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/lab2_7/Fraction.cpp.i
+.PHONY : lab2_7/Fraction.cpp.i
+
+lab2_7/Fraction.s: lab2_7/Fraction.cpp.s
+.PHONY : lab2_7/Fraction.s
+
+# target to generate assembly for a file
+lab2_7/Fraction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/lab2_7/Fraction.cpp.s
+.PHONY : lab2_7/Fraction.cpp.s
+
+lab2_7/lab2_7_unit_test.o: lab2_7/lab2_7_unit_test.cpp.o
+.PHONY : lab2_7/lab2_7_unit_test.o
+
+# target to build an object file
+lab2_7/lab2_7_unit_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/lab2_7/lab2_7_unit_test.cpp.o
+.PHONY : lab2_7/lab2_7_unit_test.cpp.o
+
+lab2_7/lab2_7_unit_test.i: lab2_7/lab2_7_unit_test.cpp.i
+.PHONY : lab2_7/lab2_7_unit_test.i
+
+# target to preprocess a source file
+lab2_7/lab2_7_unit_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/lab2_7/lab2_7_unit_test.cpp.i
+.PHONY : lab2_7/lab2_7_unit_test.cpp.i
+
+lab2_7/lab2_7_unit_test.s: lab2_7/lab2_7_unit_test.cpp.s
+.PHONY : lab2_7/lab2_7_unit_test.s
+
+# target to generate assembly for a file
+lab2_7/lab2_7_unit_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_7_unit_test.dir/build.make CMakeFiles/lab2_7_unit_test.dir/lab2_7/lab2_7_unit_test.cpp.s
+.PHONY : lab2_7/lab2_7_unit_test.cpp.s
+
+lab2_8/Calculator.o: lab2_8/Calculator.cpp.o
+.PHONY : lab2_8/Calculator.o
+
+# target to build an object file
+lab2_8/Calculator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_8_unit_test.dir/build.make CMakeFiles/lab2_8_unit_test.dir/lab2_8/Calculator.cpp.o
+.PHONY : lab2_8/Calculator.cpp.o
+
+lab2_8/Calculator.i: lab2_8/Calculator.cpp.i
+.PHONY : lab2_8/Calculator.i
+
+# target to preprocess a source file
+lab2_8/Calculator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_8_unit_test.dir/build.make CMakeFiles/lab2_8_unit_test.dir/lab2_8/Calculator.cpp.i
+.PHONY : lab2_8/Calculator.cpp.i
+
+lab2_8/Calculator.s: lab2_8/Calculator.cpp.s
+.PHONY : lab2_8/Calculator.s
+
+# target to generate assembly for a file
+lab2_8/Calculator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_8_unit_test.dir/build.make CMakeFiles/lab2_8_unit_test.dir/lab2_8/Calculator.cpp.s
+.PHONY : lab2_8/Calculator.cpp.s
+
+lab2_8/lab2_8_unit_test.o: lab2_8/lab2_8_unit_test.cpp.o
+.PHONY : lab2_8/lab2_8_unit_test.o
+
+# target to build an object file
+lab2_8/lab2_8_unit_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_8_unit_test.dir/build.make CMakeFiles/lab2_8_unit_test.dir/lab2_8/lab2_8_unit_test.cpp.o
+.PHONY : lab2_8/lab2_8_unit_test.cpp.o
+
+lab2_8/lab2_8_unit_test.i: lab2_8/lab2_8_unit_test.cpp.i
+.PHONY : lab2_8/lab2_8_unit_test.i
+
+# target to preprocess a source file
+lab2_8/lab2_8_unit_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_8_unit_test.dir/build.make CMakeFiles/lab2_8_unit_test.dir/lab2_8/lab2_8_unit_test.cpp.i
+.PHONY : lab2_8/lab2_8_unit_test.cpp.i
+
+lab2_8/lab2_8_unit_test.s: lab2_8/lab2_8_unit_test.cpp.s
+.PHONY : lab2_8/lab2_8_unit_test.s
+
+# target to generate assembly for a file
+lab2_8/lab2_8_unit_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2_8_unit_test.dir/build.make CMakeFiles/lab2_8_unit_test.dir/lab2_8/lab2_8_unit_test.cpp.s
+.PHONY : lab2_8/lab2_8_unit_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -407,6 +553,8 @@ help:
 	@echo "... lab2_4_unit_test"
 	@echo "... lab2_5_unit_test"
 	@echo "... lab2_6_unit_test"
+	@echo "... lab2_7_unit_test"
+	@echo "... lab2_8_unit_test"
 	@echo "... lab2_3/Money.o"
 	@echo "... lab2_3/Money.i"
 	@echo "... lab2_3/Money.s"
@@ -434,6 +582,21 @@ help:
 	@echo "... lab2_6/lab2_6_unit_test.o"
 	@echo "... lab2_6/lab2_6_unit_test.i"
 	@echo "... lab2_6/lab2_6_unit_test.s"
+	@echo "... lab2_7/Calculator.o"
+	@echo "... lab2_7/Calculator.i"
+	@echo "... lab2_7/Calculator.s"
+	@echo "... lab2_7/Fraction.o"
+	@echo "... lab2_7/Fraction.i"
+	@echo "... lab2_7/Fraction.s"
+	@echo "... lab2_7/lab2_7_unit_test.o"
+	@echo "... lab2_7/lab2_7_unit_test.i"
+	@echo "... lab2_7/lab2_7_unit_test.s"
+	@echo "... lab2_8/Calculator.o"
+	@echo "... lab2_8/Calculator.i"
+	@echo "... lab2_8/Calculator.s"
+	@echo "... lab2_8/lab2_8_unit_test.o"
+	@echo "... lab2_8/lab2_8_unit_test.i"
+	@echo "... lab2_8/lab2_8_unit_test.s"
 .PHONY : help
 
 

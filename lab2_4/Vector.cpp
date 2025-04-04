@@ -106,18 +106,7 @@ Vector &Vector::operator=(const Vector &v)
 
 bool operator!=(const Vector &v1, const Vector &v2)
 {
-    if (v1.size == v2.size)
-    {
-        return false;
-    }
-    for (int i = 0; i < v1.size; ++i)
-    {
-        if (v1.date[i] == v2.date[i])
-        {
-            return false;
-        }
-    }
-    return true;
+    return !(v1 == v2);
 }
 
 ostream &operator<<(ostream &sout, const Vector &v)
