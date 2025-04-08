@@ -4,25 +4,13 @@
 
 using namespace std;
 
-Calculator::Fraction::Fraction()
-{
-    whole = 0;
-    frac = 0;
-}
+int Calculator::count = 0;
+int Calculator::Fraction::count = 0;
 
-Calculator::Fraction::Fraction(long w, unsigned char f)
-{
-    whole = w;
-    frac = f;
-}
-
-Calculator::Fraction::Fraction(const Fraction &f)
-{
-    whole = f.whole;
-    frac = f.frac;
-}
-
-Calculator::Fraction::~Fraction() {};
+Calculator::Fraction::Fraction() : whole(0), frac(0) { count++; }
+Calculator::Fraction::Fraction(long w, unsigned char f) : whole(w), frac(f) { count++; }
+Calculator::Fraction::Fraction(const Fraction &f) : whole(f.whole), frac(f.frac) { count++; }
+Calculator::Fraction::~Fraction() { count--; }
 
 Calculator::Fraction &Calculator::Fraction::operator=(const Calculator::Fraction &f)
 {
@@ -34,12 +22,9 @@ Calculator::Fraction &Calculator::Fraction::operator=(const Calculator::Fraction
 Calculator::Fraction::operator string() const
 {
     stringstream sout;
-
     sout << whole << ",";
     if (frac < 10)
-    {
         sout << "0";
-    }
     sout << (int)frac;
     return sout.str();
 }
@@ -57,147 +42,89 @@ istream &operator>>(istream &in, Calculator::Fraction &f)
     in.ignore(numeric_limits<streamsize>::max(), '\n');
 
     int temp;
-
     do
     {
         cout << "Write fractional part (0-99): ";
         in >> temp;
         in.ignore(numeric_limits<streamsize>::max(), '\n');
-        f.frac = static_cast<unsigned char>(temp);
-    } while (temp > 99);
+    } while (temp < 0 || temp > 99);
+    f.frac = static_cast<unsigned char>(temp);
 
     return in;
 }
 
 Calculator::Fraction operator+(const Calculator::Fraction &f1, const Calculator::Fraction &f2)
 {
-    long Whole = f1.whole + f2.whole;
-    unsigned char Frac = f1.frac + f2.frac;
+    long whole = f1.whole + f2.whole;
+    unsigned char frac = f1.frac + f2.frac;
 
-    if (Frac > 100)
+    if (frac >= 100)
     {
-        Whole += Frac / 100;
-        Frac = Frac % 100;
+        whole += frac / 100;
+        frac = frac % 100;
     }
-    return Calculator::Fraction(Whole, Frac);
+    return Calculator::Fraction(whole, frac);
 }
 
 Calculator::Fraction operator-(const Calculator::Fraction &f1, const Calculator::Fraction &f2)
 {
-    long Whole = f1.whole - f2.whole;
-    int Frac = f1.frac - f2.frac;
+    long whole = f1.whole - f2.whole;
+    int frac = f1.frac - f2.frac;
 
-    if (Frac < 0)
+    if (frac < 0)
     {
-        Whole -= 1;
-        Frac += 100;
+        whole -= 1;
+        frac += 100;
     }
-
-    return Calculator::Fraction(Whole, Frac);
+    return Calculator::Fraction(whole, static_cast<unsigned char>(frac));
 }
 
 Calculator::Fraction operator*(const Calculator::Fraction &f1, const Calculator::Fraction &f2)
 {
-    long Whole = f1.whole * f2.whole;
-    unsigned char Frac = (f1.frac * f2.frac) / 100;
-
-    if (Frac >= 100)
-    {
-        Whole += Frac / 100;
-        Frac = Frac % 100;
-    }
-
-    return Calculator::Fraction(Whole, Frac);
+    long total1 = f1.whole * 100 + f1.frac;
+    long total2 = f2.whole * 100 + f2.frac;
+    long result = (total1 * total2) / 100;
+    return Calculator::Fraction(result / 100, result % 100);
 }
 
 bool operator==(const Calculator::Fraction &f1, const Calculator::Fraction &f2)
 {
-    if (f1.whole == f2.whole && f1.frac == f2.frac)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return f1.whole == f2.whole && f1.frac == f2.frac;
 }
 
 bool operator!=(const Calculator::Fraction &f1, const Calculator::Fraction &f2)
 {
-    if (f1.whole != f2.whole && f1.frac != f2.frac)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return !(f1 == f2);
 }
 
 bool operator<(const Calculator::Fraction &f1, const Calculator::Fraction &f2)
 {
-    if (f1.whole < f2.whole && f1.frac < f2.frac)
-    {
+    if (f1.whole < f2.whole)
         return true;
-    }
-    else
-    {
-        return false;
-    }
+    if (f1.whole == f2.whole)
+        return f1.frac < f2.frac;
+    return false;
 }
 
 bool operator>(const Calculator::Fraction &f1, const Calculator::Fraction &f2)
 {
-    if (f1.whole > f2.whole && f1.frac > f2.frac)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return f2 < f1;
 }
 
 bool operator<=(const Calculator::Fraction &f1, const Calculator::Fraction &f2)
 {
-    if (f1.whole <= f2.whole && f1.frac <= f2.frac)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return !(f2 < f1);
 }
 
 bool operator>=(const Calculator::Fraction &f1, const Calculator::Fraction &f2)
 {
-    if (f1.whole >= f2.whole && f1.frac >= f2.frac)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return !(f1 < f2);
 }
 
-Calculator::Calculator()
-{
-    fraction = Fraction();
-}
-
-Calculator::Calculator(Fraction value)
-{
-    fraction = value;
-}
-
-Calculator::Calculator(const Calculator &c)
-{
-    fraction = c.fraction;
-}
-
-Calculator::~Calculator() {};
+Calculator::Calculator() : fraction() { count++; }
+Calculator::Calculator(Fraction value) : fraction(value) { count++; }
+Calculator::Calculator(const Calculator &c) : fraction(c.fraction) { count++; }
+Calculator::~Calculator() { count--; }
 
 Calculator &Calculator::operator=(const Calculator &c)
 {
@@ -226,22 +153,17 @@ istream &operator>>(istream &in, Calculator &c)
 
 Calculator operator+(const Calculator &c1, const Calculator &c2)
 {
-    Calculator::Fraction sum = c1.fraction + c2.fraction;
-    return Calculator(sum);
+    return Calculator(c1.fraction + c2.fraction);
 }
 
 Calculator operator-(const Calculator &c1, const Calculator &c2)
 {
-    Calculator::Fraction dif = c1.fraction - c2.fraction;
-    return Calculator(dif);
+    return Calculator(c1.fraction - c2.fraction);
 }
 
 Calculator operator*(const Calculator &c1, const Calculator &c2)
 {
-    Calculator::Fraction mult = c1.fraction * c2.
-
-                                              fraction;
-    return Calculator(mult);
+    return Calculator(c1.fraction * c2.fraction);
 }
 
 bool operator==(const Calculator &c1, const Calculator &c2)
@@ -251,7 +173,7 @@ bool operator==(const Calculator &c1, const Calculator &c2)
 
 bool operator!=(const Calculator &c1, const Calculator &c2)
 {
-    return c1.fraction != c2.fraction;
+    return !(c1 == c2);
 }
 
 bool operator<(const Calculator &c1, const Calculator &c2)
@@ -261,15 +183,15 @@ bool operator<(const Calculator &c1, const Calculator &c2)
 
 bool operator>(const Calculator &c1, const Calculator &c2)
 {
-    return c1.fraction > c2.fraction;
+    return c2 < c1;
 }
 
 bool operator<=(const Calculator &c1, const Calculator &c2)
 {
-    return c1.fraction <= c2.fraction;
+    return !(c2 < c1);
 }
 
 bool operator>=(const Calculator &c1, const Calculator &c2)
 {
-    return c1.fraction >= c2.fraction;
+    return !(c1 < c2);
 }

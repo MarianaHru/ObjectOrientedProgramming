@@ -1,18 +1,23 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
 class Calculator
 {
 private:
+    static int count;
+
 public:
     class Fraction
     {
     private:
         long whole;
         unsigned char frac;
+        static int count;
 
     public:
         Fraction();
@@ -24,7 +29,11 @@ public:
         unsigned char GetSecond() const { return frac; }
 
         void SetFirst(long first) { whole = first; }
-        bool SetSecond(unsigned char second) { frac = second; }
+        bool SetSecond(unsigned char second)
+        {
+            frac = second;
+            return true;
+        }
 
         Fraction &operator=(const Fraction &);
 
@@ -42,8 +51,11 @@ public:
         friend bool operator>(const Fraction &f1, const Fraction &f2);
         friend bool operator<=(const Fraction &f1, const Fraction &f2);
         friend bool operator>=(const Fraction &f1, const Fraction &f2);
+
+        static int GetCount() { return count; }
     };
-    Calculator::Fraction GetFraction() const { return fraction; }
+
+    Fraction GetFraction() const { return fraction; }
     void SetFraction(Fraction value) { fraction = value; }
 
     Calculator();
@@ -67,6 +79,8 @@ public:
     friend bool operator>(const Calculator &c1, const Calculator &c2);
     friend bool operator<=(const Calculator &c1, const Calculator &c2);
     friend bool operator>=(const Calculator &c1, const Calculator &c2);
+
+    static int GetCount() { return count; }
 
 private:
     Fraction fraction;
