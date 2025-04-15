@@ -5,6 +5,18 @@ Liquid::Liquid() : name(""), density(0) {}
 
 Liquid::Liquid(string n, double d) : name(n), density(d < 0 ? 0 : d) {}
 
+Liquid::Liquid(const Liquid &other) : name(other.name), density(other.density) {}
+
+Liquid &Liquid::operator=(const Liquid &other)
+{
+    if (this != &other)
+    {
+        name = other.name;
+        density = other.density;
+    }
+    return *this;
+}
+
 void Liquid::Init(string n, double d)
 {
     name = n;

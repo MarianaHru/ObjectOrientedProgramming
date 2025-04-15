@@ -132,7 +132,6 @@ std::istream &operator>>(std::istream &in, Money &money)
 
 std::ostream &operator<<(std::ostream &out, const Money &money)
 {
-    out << money.hryvna << '.'
-        << std::setw(2) << std::setfill('0') << static_cast<int>(money.kopek) << " UAH";
+    out << money.hryvna << '.' << std::setw(2) << std::setfill('0') << static_cast<int>(money.kopek) << " UAH";
     return out;
 }

@@ -31,8 +31,8 @@ public:
     friend istream &operator>>(istream &in, Liquid &l);
     explicit operator string() const;
 
-    Liquid &operator++();   // префікс
-    Liquid operator++(int); // постфікс
+    Liquid &operator++();
+    Liquid operator++(int);
     Liquid &operator--();
     Liquid operator--(int);
 

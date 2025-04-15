@@ -13,6 +13,8 @@ protected:
 public:
     Liquid();
     Liquid(string, double);
+    Liquid(const Liquid &);            // Конструктор копіювання
+    Liquid &operator=(const Liquid &); // Оператор присвоєння
 
     void Init(string, double);
     void Read();

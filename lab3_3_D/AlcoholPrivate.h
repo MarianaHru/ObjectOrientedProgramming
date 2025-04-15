@@ -9,6 +9,8 @@ class AlcoholPrivate : private Liquid
 public:
     AlcoholPrivate();
     AlcoholPrivate(string, double, double);
+    AlcoholPrivate(const AlcoholPrivate &);            // Конструктор копіювання
+    AlcoholPrivate &operator=(const AlcoholPrivate &); // Оператор присвоєння
 
     using Liquid::Display;
     using Liquid::Init;

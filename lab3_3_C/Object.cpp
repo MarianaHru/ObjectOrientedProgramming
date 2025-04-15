@@ -1,3 +1,4 @@
+// Object.cpp
 #include "Object.h"
 
 // Ініціалізація статичної змінної count

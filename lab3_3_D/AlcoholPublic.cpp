@@ -5,12 +5,13 @@ AlcoholPublic::AlcoholPublic() : Liquid(), strength(0) {}
 
 AlcoholPublic::AlcoholPublic(string n, double d, double s) : Liquid(n, d), strength(s < 0 ? 0 : s) {}
 
+AlcoholPublic::AlcoholPublic(const AlcoholPublic &other) : Liquid(other), strength(other.strength) {}
+
 AlcoholPublic &AlcoholPublic::operator=(const AlcoholPublic &other)
 {
     if (this != &other)
     {
-        name = other.name;
-        density = other.density;
+        Liquid::operator=(other); // Виклик оператора присвоєння базового класу
         strength = other.strength;
     }
     return *this;

@@ -5,6 +5,18 @@ AlcoholPrivate::AlcoholPrivate() : Liquid(), strength(0) {}
 
 AlcoholPrivate::AlcoholPrivate(string n, double d, double s) : Liquid(n, d), strength(s < 0 ? 0 : s) {}
 
+AlcoholPrivate::AlcoholPrivate(const AlcoholPrivate &other) : Liquid(other), strength(other.strength) {}
+
+AlcoholPrivate &AlcoholPrivate::operator=(const AlcoholPrivate &other)
+{
+    if (this != &other)
+    {
+        Liquid::operator=(other); // Виклик оператора присвоєння базового класу
+        strength = other.strength;
+    }
+    return *this;
+}
+
 AlcoholPrivate &AlcoholPrivate::operator++()
 {
     ++strength;

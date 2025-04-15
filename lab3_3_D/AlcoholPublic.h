@@ -9,7 +9,7 @@ class AlcoholPublic : public Liquid
 public:
     AlcoholPublic();
     AlcoholPublic(string, double, double);
-
+    AlcoholPublic(const AlcoholPublic &); // Конструктор копіювання
     AlcoholPublic &operator=(const AlcoholPublic &);
 
     using Liquid::Display;
