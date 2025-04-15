@@ -1,11 +1,13 @@
-#pragma once
-#include <string>
-#include <iostream>
+#ifndef MONEY_H
+#define MONEY_H
 
-class Money
+#include "Pair.h"
+#include <iostream>
+#include <string>
+
+class Money : public Pair
 {
-protected:
-    long hryvna;
+private:
     unsigned char kopek;
 
 public:
@@ -13,33 +15,31 @@ public:
     Money(long hryvna, unsigned char kopek);
     Money(const Money &other);
 
-    // Геттери та сеттери
-    long GetHryvna() const { return hryvna; }
-    unsigned char GetKopek() const { return kopek; }
-    void SetHryvna(long h) { hryvna = h; }
+    long GetHryvna() const;
+    unsigned char GetKopek() const;
+    void SetHryvna(long h);
     bool SetKopek(unsigned char k);
 
-    // Операції вводу/виводу
-    std::string toString() const;
+    Методи ініціалізації void Init(long hryvna, unsigned char kopek);
+
     void fromString(const std::string &s);
 
-    // Операції
     friend Money operator+(const Money &m1, const Money &m2);
-    friend double operator/(const Money &m1, const Money &m2); // Оператор ділення для двох Money
-    friend Money operator/(const Money &m, double divisor);    // Оператор ділення Money на число
+    friend Money operator-(const Money &m1, const Money &m2);
+    friend double operator/(const Money &m1, const Money &m2);
+    friend Money operator/(const Money &m, double divisor);
 
-    Money &operator++();   // Префіксний інкремент
-    Money operator++(int); // Постфіксний інкремент
-    Money &operator--();   // Префіксний декремент
-    Money operator--(int); // Постфіксний декремент
+    Money &operator++();
+    Money operator++(int);
+    Money &operator--();
+    Money operator--(int);
 
-    bool operator==(const Money &other) const;
-    bool operator!=(const Money &other) const;
+        Money &operator=(const Money &other);
 
-    Money &operator=(const Money &other);
-
-    friend std::ostream &operator<<(std::ostream &out, const Money &m);
-    friend std::istream &operator>>(std::istream &in, Money &m);
-
-    operator std::string() const { return toString(); }
+    std::string toString() const;
 };
+
+// Зовнішня функція makeMoney
+Money makeMoney(long hryvna, unsigned char kopek);
+
+#endif

@@ -1,80 +1,119 @@
+// MoneyPublic.cpp
 #include "MoneyPublic.h"
 
 MoneyPublic::MoneyPublic() : Money() {}
+MoneyPublic::MoneyPublic(long h, unsigned char k) : Money(h, k) {}
+MoneyPublic::MoneyPublic(const Money &other) : Money(other) {}
+MoneyPublic::MoneyPublic(const MoneyPublic &other) : Money(other) {}
 
-MoneyPublic::MoneyPublic(long hryvna, unsigned char kopek)
-    : Money(hryvna, kopek) {}
-
-MoneyPublic::MoneyPublic(const Money &other)
-    : Money(other) {}
-
-MoneyPublic MoneyPublic::operator+(const MoneyPublic &other) const
+MoneyPublic &MoneyPublic::operator=(const MoneyPublic &m)
 {
-    long totalKopeks = (hryvna * 100 + kopek) + (other.hryvna * 100 + other.kopek);
-    return MoneyPublic(totalKopeks / 100, totalKopeks % 100);
-}
-
-MoneyPublic MoneyPublic::operator/(double divisor) const
-{
-    if (divisor == 0)
-        throw invalid_argument("Division by zero!");
-
-    double totalKopeks = (hryvna * 100.0 + kopek) / divisor;
-    return MoneyPublic(static_cast<long>(totalKopeks) / 100, static_cast<unsigned char>(static_cast<long>(totalKopeks) % 100));
-}
-
-double MoneyPublic::operator/(const MoneyPublic &other) const
-{
-    if (other.hryvna == 0 && other.kopek == 0)
-        throw invalid_argument("Division by zero!");
-
-    double total1 = hryvna * 100.0 + kopek;
-    double total2 = other.hryvna * 100.0 + other.kopek;
-    return total1 / total2;
-}
-
-MoneyPublic &MoneyPublic::operator++()
-{
-    long totalKopeks = hryvna * 100 + kopek + 1;
-    hryvna = totalKopeks / 100;
-    kopek = totalKopeks % 100;
-    return *this;
-}
-
-MoneyPublic MoneyPublic::operator++(int)
-{
-    MoneyPublic temp = *this;
-    ++(*this);
-    return temp;
-}
-
-MoneyPublic &MoneyPublic::operator--()
-{
-    if (hryvna == 0 && kopek == 0)
+    if (this != &m)
     {
-        cout << "Cannot decrement below zero!" << endl;
-        return *this;
+        hryvnia = m.hryvnia;
+        kopiyky = m.kopiyky;
     }
-
-    long totalKopeks = hryvna * 100 + kopek - 1;
-    hryvna = totalKopeks / 100;
-    kopek = totalKopeks % 100;
     return *this;
 }
 
-MoneyPublic MoneyPublic::operator--(int)
+MoneyPublic operator+(const MoneyPublic &a, const MoneyPublic &b)
 {
-    MoneyPublic temp = *this;
-    --(*this);
+    long totalKopiyky = a.hryvnia * 100 + a.kopiyky + b.hryvnia * 100 + b.kopiyky;
+    return MoneyPublic(totalKopiyky / 100, totalKopiyky % 100);
+}
+
+MoneyPublic operator-(const MoneyPublic &a, const MoneyPublic &b)
+{
+    long totalA = a.hryvnia * 100 + a.kopiyky;
+    long totalB = b.hryvnia * 100 + b.kopiyky;
+    long result = totalA - totalB;
+    return MoneyPublic(result / 100, result % 100);
+}
+
+MoneyPublic operator*(const MoneyPublic &a, const MoneyPublic &b)
+{
+    long long totalKopiykyA = a.hryvnia * 100 + a.kopiyky;
+    long long totalKopiykyB = b.hryvnia * 100 + b.kopiyky;
+    long long result = (long long)totalKopiykyA * totalKopiykyB / 10000;
+    return MoneyPublic(result / 100, result % 100);
+}
+
+MoneyPublic operator/(const MoneyPublic &a, const MoneyPublic &b)
+{
+    if (b.hryvnia == 0 && b.kopiyky == 0)
+    {
+        return MoneyPublic(0, 0);
+    }
+    long double totalA = a.hryvnia * 100.0 + a.kopiyky;
+    long double totalB = b.hryvnia * 100.0 + b.kopiyky;
+    long long result = (long long)(totalA / totalB * 100);
+    return MoneyPublic(result / 100, result % 100);
+}
+
+bool operator==(const MoneyPublic &a, const MoneyPublic &b)
+{
+    return a.hryvnia == b.hryvnia && a.kopiyky == b.kopiyky;
+}
+
+bool operator!=(const MoneyPublic &a, const MoneyPublic &b)
+{
+    return !(a == b);
+}
+
+bool operator>(const MoneyPublic &a, const MoneyPublic &b)
+{
+    return (a.hryvnia > b.hryvnia) || (a.hryvnia == b.hryvnia && a.kopiyky > b.kopiyky);
+}
+
+bool operator<(const MoneyPublic &a, const MoneyPublic &b)
+{
+    return (a.hryvnia < b.hryvnia) || (a.hryvnia == b.hryvnia && a.kopiyky < b.kopiyky);
+}
+
+bool operator>=(const MoneyPublic &a, const MoneyPublic &b)
+{
+    return (a > b) || (a == b);
+}
+
+bool operator<=(const MoneyPublic &a, const MoneyPublic &b)
+{
+    return (a < b) || (a == b);
+}
+
+MoneyPublic &operator++(MoneyPublic &m)
+{
+    if (++m.kopiyky >= 100)
+    {
+        m.kopiyky = 0;
+        ++m.hryvnia;
+    }
+    return m;
+}
+
+MoneyPublic operator++(MoneyPublic &m, int)
+{
+    MoneyPublic temp = m;
+    ++m;
     return temp;
 }
 
-bool MoneyPublic::operator==(const MoneyPublic &other) const
+MoneyPublic &operator--(MoneyPublic &m)
 {
-    return (hryvna == other.hryvna) && (kopek == other.kopek);
+    if (m.kopiyky == 0)
+    {
+        --m.hryvnia;
+        m.kopiyky = 99;
+    }
+    else
+    {
+        --m.kopiyky;
+    }
+    return m;
 }
 
-bool MoneyPublic::operator!=(const MoneyPublic &other) const
+MoneyPublic operator--(MoneyPublic &m, int)
 {
-    return !(*this == other);
+    MoneyPublic temp = m;
+    --m;
+    return temp;
 }

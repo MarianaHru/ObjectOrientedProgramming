@@ -1,28 +1,26 @@
 #pragma once
 #include <iostream>
 #include <string>
-
+#include <sstream>
 using namespace std;
 
 class Money
 {
 protected:
-    long hryvna;
-    unsigned char kopek;
+    long hryvnia;
+    unsigned char kopiyky;
 
 public:
     Money();
-    Money(long hryvna, unsigned char kopek);
-    Money(const Money &other);
+    Money(long, unsigned char);
+    Money(const Money &);
 
-    long GetHryvna() const;
-    unsigned char GetKopek() const;
-    void SetHryvna(long h);
-    bool SetKopek(unsigned char k);
+    void Init(long, unsigned char);
+    void Read();
+    void Display() const;
 
-    string toString() const;
-    void fromString(const string &s);
+    explicit operator string() const;
 
-    friend ostream &operator<<(ostream &out, const Money &m);
-    friend istream &operator>>(istream &in, Money &m);
+    friend ostream &operator<<(ostream &, const Money &);
+    friend istream &operator>>(istream &, Money &);
 };

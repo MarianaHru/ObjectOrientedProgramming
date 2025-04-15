@@ -4,21 +4,34 @@
 class MoneyPrivate : private Money
 {
 public:
-    MoneyPrivate();
-    MoneyPrivate(long hryvna, unsigned char kopek);
-    MoneyPrivate(const Money &other);
+    // Конструктори
+    MoneyPrivate() : Money() {}
+    MoneyPrivate(long h, unsigned char k) : Money(h, k) {}
+    MoneyPrivate(const Money &other) : Money(other) {}
+    MoneyPrivate(const MoneyPrivate &other) : Money(other) {}
 
-    Money toBase() const;
+    // Доступ до методів базового класу
+    using Money::Display;
+    using Money::Init;
+    using Money::Read;
+    using Money::operator string;
 
-    MoneyPrivate operator+(const MoneyPrivate &other) const;
-    MoneyPrivate operator/(double divisor) const;
-    double operator/(const MoneyPrivate &other) const;
+    friend MoneyPrivate operator*(const MoneyPrivate &a, const MoneyPrivate &b);
+    friend MoneyPrivate operator/(const MoneyPrivate &a, const MoneyPrivate &b);
+    friend MoneyPrivate operator+(const MoneyPrivate &, const MoneyPrivate &);
+    friend MoneyPrivate operator-(const MoneyPrivate &, const MoneyPrivate &);
+    friend ostream &operator<<(ostream &, const MoneyPrivate &);
+    friend istream &operator>>(istream &, MoneyPrivate &);
 
-    MoneyPrivate &operator++();
-    MoneyPrivate operator++(int);
-    MoneyPrivate &operator--();
-    MoneyPrivate operator--(int);
+    friend MoneyPrivate &operator++(MoneyPrivate &m);
+    friend MoneyPrivate operator++(MoneyPrivate &m, int);
+    friend MoneyPrivate &operator--(MoneyPrivate &m);
+    friend MoneyPrivate operator--(MoneyPrivate &m, int);
 
-    bool operator==(const MoneyPrivate &other) const;
-    bool operator!=(const MoneyPrivate &other) const;
+        friend bool operator==(const MoneyPrivate &a, const MoneyPrivate &b);
+    friend bool operator!=(const MoneyPrivate &a, const MoneyPrivate &b);
+    friend bool operator>(const MoneyPrivate &a, const MoneyPrivate &b);
+    friend bool operator<(const MoneyPrivate &a, const MoneyPrivate &b);
+    friend bool operator>=(const MoneyPrivate &a, const MoneyPrivate &b);
+    friend bool operator<=(const MoneyPrivate &a, const MoneyPrivate &b);
 };

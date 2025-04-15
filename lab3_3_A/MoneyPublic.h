@@ -4,19 +4,31 @@
 class MoneyPublic : public Money
 {
 public:
-    MoneyPublic();
-    MoneyPublic(long hryvna, unsigned char kopek);
-    MoneyPublic(const Money &other);
+    // Конструктори
+    MoneyPublic() : Money() {}
+    MoneyPublic(long h, unsigned char k) : Money(h, k) {}
+    MoneyPublic(const Money &other) : Money(other) {}
+    MoneyPublic(const MoneyPublic &other) : Money(other) {}
 
-    MoneyPublic operator+(const MoneyPublic &other) const;
-    MoneyPublic operator/(double divisor) const;
-    double operator/(const MoneyPublic &other) const;
+    using Money::operator string;
+    using Money::Display;
 
-    MoneyPublic &operator++();   // Префіксний інкремент
-    MoneyPublic operator++(int); // Постфіксний інкремент
-    MoneyPublic &operator--();
-    MoneyPublic operator--(int);
+    MoneyPublic &operator=(const MoneyPublic &);
 
-    bool operator==(const MoneyPublic &other) const;
-    bool operator!=(const MoneyPublic &other) const;
+    friend MoneyPublic operator*(const MoneyPublic &a, const MoneyPublic &b);
+    friend MoneyPublic operator/(const MoneyPublic &a, const MoneyPublic &b);
+    friend MoneyPublic operator+(const MoneyPublic &, const MoneyPublic &);
+    friend MoneyPublic operator-(const MoneyPublic &, const MoneyPublic &);
+
+    friend MoneyPublic &operator++(MoneyPublic &m);
+    friend MoneyPublic operator++(MoneyPublic &m, int);
+    friend MoneyPublic &operator--(MoneyPublic &m);
+    friend MoneyPublic operator--(MoneyPublic &m, int);
+
+    friend bool operator==(const MoneyPublic &, const MoneyPublic &);
+    friend bool operator!=(const MoneyPublic &a, const MoneyPublic &b);
+    friend bool operator>(const MoneyPublic &a, const MoneyPublic &b);
+    friend bool operator<(const MoneyPublic &a, const MoneyPublic &b);
+    friend bool operator>=(const MoneyPublic &a, const MoneyPublic &b);
+    friend bool operator<=(const MoneyPublic &a, const MoneyPublic &b);
 };

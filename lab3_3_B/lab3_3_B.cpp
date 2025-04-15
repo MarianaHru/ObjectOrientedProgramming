@@ -1,32 +1,42 @@
+#include "Money.h"
+#include "Pair.h"
 #include <iostream>
-#include "MoneyPrivate.h"
-
+#include <string>
+#ifndef UNIT_TESTING
 int main()
 {
-    // Створення об'єктів MoneyPrivate
-    MoneyPrivate m1, m2(10, 50);
+    std::cout << "Демонстрація класу Pair:" << std::endl;
+    Pair p1;
+    std::cout << "Початкове значення p1: " << p1 << std::endl;
 
-    std::cout << "Enter first amount (format: hryvna,kopek):\n";
-    std::string input;
-    std::getline(std::cin, input);
-    m1.fromString(input);
+    std::cout << "Введіть значення для p1 (формат: (число,число)): ";
+    std::cin >> p1;
+    std::cout << "Значення p1 після введення: " << p1 << std::endl;
 
-    std::cout << "m1: " << m1.toString() << std::endl;
-    std::cout << "m2: " << m2.toString() << std::endl;
+    std::cout << "\nДемонстрація класу Money:" << std::endl;
+    Money m1;
+    std::cout << "Початкове значення m1: " << m1 << std::endl;
 
-    MoneyPrivate sum = m1 + m2;
-    std::cout << "Sum: " << sum.toString() << std::endl;
+    std::cout << "Введіть значення для m1 (формат: (гривні,копійки)): ";
+    std::cin >> m1;
+    std::cout << "Значення m1 після введення: " << m1 << std::endl;
+    std::cout << "m1 у форматі гривні,копійки: " << m1.toString() << std::endl;
 
-    // Перевірка ділення
-    try
+    Money m2(50, 75);
+    std::cout << "m2: " << m2 << std::endl;
+
+    Money sum = m1 + m2;
+    std::cout << "Сума m1 та m2: " << sum << std::endl;
+
+    if (m1 > m2)
     {
-        double div = m1 / m2;
-        std::cout << "Division m1 / m2: " << div << std::endl;
+        std::cout << "m1 більша за m2" << std::endl;
     }
-    catch (const std::invalid_argument &e)
+    else
     {
-        std::cout << e.what() << std::endl;
+        std::cout << "m2 більша або дорівнює m1" << std::endl;
     }
 
     return 0;
 }
+#endif

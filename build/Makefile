@@ -139,6 +139,19 @@ lab3_1_unit_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_1_unit_test.dir/build.make CMakeFiles/lab3_1_unit_test.dir/build
 .PHONY : lab3_1_unit_test/fast
 
+#=============================================================================
+# Target rules for targets named lab3_3_E_unit_test
+
+# Build rule for target.
+lab3_3_E_unit_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab3_3_E_unit_test
+.PHONY : lab3_3_E_unit_test
+
+# fast build rule for target.
+lab3_3_E_unit_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/build
+.PHONY : lab3_3_E_unit_test/fast
+
 lab3_1/Alcohol.o: lab3_1/Alcohol.cpp.o
 .PHONY : lab3_1/Alcohol.o
 
@@ -211,6 +224,102 @@ lab3_1/lab3_1_unit_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_1_unit_test.dir/build.make CMakeFiles/lab3_1_unit_test.dir/lab3_1/lab3_1_unit_test.cpp.s
 .PHONY : lab3_1/lab3_1_unit_test.cpp.s
 
+lab3_3_E/Alcohol.o: lab3_3_E/Alcohol.cpp.o
+.PHONY : lab3_3_E/Alcohol.o
+
+# target to build an object file
+lab3_3_E/Alcohol.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/Alcohol.cpp.o
+.PHONY : lab3_3_E/Alcohol.cpp.o
+
+lab3_3_E/Alcohol.i: lab3_3_E/Alcohol.cpp.i
+.PHONY : lab3_3_E/Alcohol.i
+
+# target to preprocess a source file
+lab3_3_E/Alcohol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/Alcohol.cpp.i
+.PHONY : lab3_3_E/Alcohol.cpp.i
+
+lab3_3_E/Alcohol.s: lab3_3_E/Alcohol.cpp.s
+.PHONY : lab3_3_E/Alcohol.s
+
+# target to generate assembly for a file
+lab3_3_E/Alcohol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/Alcohol.cpp.s
+.PHONY : lab3_3_E/Alcohol.cpp.s
+
+lab3_3_E/Liquid.o: lab3_3_E/Liquid.cpp.o
+.PHONY : lab3_3_E/Liquid.o
+
+# target to build an object file
+lab3_3_E/Liquid.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/Liquid.cpp.o
+.PHONY : lab3_3_E/Liquid.cpp.o
+
+lab3_3_E/Liquid.i: lab3_3_E/Liquid.cpp.i
+.PHONY : lab3_3_E/Liquid.i
+
+# target to preprocess a source file
+lab3_3_E/Liquid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/Liquid.cpp.i
+.PHONY : lab3_3_E/Liquid.cpp.i
+
+lab3_3_E/Liquid.s: lab3_3_E/Liquid.cpp.s
+.PHONY : lab3_3_E/Liquid.s
+
+# target to generate assembly for a file
+lab3_3_E/Liquid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/Liquid.cpp.s
+.PHONY : lab3_3_E/Liquid.cpp.s
+
+lab3_3_E/Object.o: lab3_3_E/Object.cpp.o
+.PHONY : lab3_3_E/Object.o
+
+# target to build an object file
+lab3_3_E/Object.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/Object.cpp.o
+.PHONY : lab3_3_E/Object.cpp.o
+
+lab3_3_E/Object.i: lab3_3_E/Object.cpp.i
+.PHONY : lab3_3_E/Object.i
+
+# target to preprocess a source file
+lab3_3_E/Object.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/Object.cpp.i
+.PHONY : lab3_3_E/Object.cpp.i
+
+lab3_3_E/Object.s: lab3_3_E/Object.cpp.s
+.PHONY : lab3_3_E/Object.s
+
+# target to generate assembly for a file
+lab3_3_E/Object.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/Object.cpp.s
+.PHONY : lab3_3_E/Object.cpp.s
+
+lab3_3_E/lab3_3_E_unit_test.o: lab3_3_E/lab3_3_E_unit_test.cpp.o
+.PHONY : lab3_3_E/lab3_3_E_unit_test.o
+
+# target to build an object file
+lab3_3_E/lab3_3_E_unit_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/lab3_3_E_unit_test.cpp.o
+.PHONY : lab3_3_E/lab3_3_E_unit_test.cpp.o
+
+lab3_3_E/lab3_3_E_unit_test.i: lab3_3_E/lab3_3_E_unit_test.cpp.i
+.PHONY : lab3_3_E/lab3_3_E_unit_test.i
+
+# target to preprocess a source file
+lab3_3_E/lab3_3_E_unit_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/lab3_3_E_unit_test.cpp.i
+.PHONY : lab3_3_E/lab3_3_E_unit_test.cpp.i
+
+lab3_3_E/lab3_3_E_unit_test.s: lab3_3_E/lab3_3_E_unit_test.cpp.s
+.PHONY : lab3_3_E/lab3_3_E_unit_test.s
+
+# target to generate assembly for a file
+lab3_3_E/lab3_3_E_unit_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3_3_E_unit_test.dir/build.make CMakeFiles/lab3_3_E_unit_test.dir/lab3_3_E/lab3_3_E_unit_test.cpp.s
+.PHONY : lab3_3_E/lab3_3_E_unit_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -221,6 +330,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... lab3_1_unit_test"
+	@echo "... lab3_3_E_unit_test"
 	@echo "... lab3_1/Alcohol.o"
 	@echo "... lab3_1/Alcohol.i"
 	@echo "... lab3_1/Alcohol.s"
@@ -230,6 +340,18 @@ help:
 	@echo "... lab3_1/lab3_1_unit_test.o"
 	@echo "... lab3_1/lab3_1_unit_test.i"
 	@echo "... lab3_1/lab3_1_unit_test.s"
+	@echo "... lab3_3_E/Alcohol.o"
+	@echo "... lab3_3_E/Alcohol.i"
+	@echo "... lab3_3_E/Alcohol.s"
+	@echo "... lab3_3_E/Liquid.o"
+	@echo "... lab3_3_E/Liquid.i"
+	@echo "... lab3_3_E/Liquid.s"
+	@echo "... lab3_3_E/Object.o"
+	@echo "... lab3_3_E/Object.i"
+	@echo "... lab3_3_E/Object.s"
+	@echo "... lab3_3_E/lab3_3_E_unit_test.o"
+	@echo "... lab3_3_E/lab3_3_E_unit_test.i"
+	@echo "... lab3_3_E/lab3_3_E_unit_test.s"
 .PHONY : help
 
 

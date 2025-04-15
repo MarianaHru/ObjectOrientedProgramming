@@ -6,3 +6,5 @@
 # testing this directory and lists subdirectories to be tested as well.
 add_test(Lab3_1_UnitTests "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/lab3_1_unit_test")
 set_tests_properties(Lab3_1_UnitTests PROPERTIES  _BACKTRACE_TRIPLES "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;41;add_test;/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;0;")
+add_test(Lab3_3_E_UnitTests "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build/lab3_3_E_unit_test")
+set_tests_properties(Lab3_3_E_UnitTests PROPERTIES  _BACKTRACE_TRIPLES "/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;228;add_test;/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/CMakeLists.txt;0;")

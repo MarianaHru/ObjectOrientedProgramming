@@ -1,85 +1,122 @@
+// MoneyPrivate.cpp
 #include "MoneyPrivate.h"
 
 MoneyPrivate::MoneyPrivate() : Money() {}
+MoneyPrivate::MoneyPrivate(long h, unsigned char k) : Money(h, k) {}
+MoneyPrivate::MoneyPrivate(const Money &other) : Money(other) {}
+MoneyPrivate::MoneyPrivate(const MoneyPrivate &other) : Money(other) {}
 
-MoneyPrivate::MoneyPrivate(long hryvna, unsigned char kopek)
-    : Money(hryvna, kopek) {}
-
-MoneyPrivate::MoneyPrivate(const Money &other)
-    : Money(other) {}
-
-Money MoneyPrivate::toBase() const
+MoneyPrivate operator+(const MoneyPrivate &a, const MoneyPrivate &b)
 {
-    return *this;
+    long total = a.hryvnia * 100 + a.kopiyky + b.hryvnia * 100 + b.kopiyky;
+    return MoneyPrivate(total / 100, total % 100);
 }
 
-MoneyPrivate MoneyPrivate::operator+(const MoneyPrivate &other) const
+MoneyPrivate operator-(const MoneyPrivate &a, const MoneyPrivate &b)
 {
-    long totalKopeks = (hryvna * 100 + kopek) + (other.hryvna * 100 + other.kopek);
-    return MoneyPrivate(totalKopeks / 100, totalKopeks % 100);
+    long total = a.hryvnia * 100 + a.kopiyky - (b.hryvnia * 100 + b.kopiyky);
+    return MoneyPrivate(total / 100, total % 100);
 }
 
-MoneyPrivate MoneyPrivate::operator/(double divisor) const
+MoneyPrivate operator*(const MoneyPrivate &a, const MoneyPrivate &b)
 {
-    if (divisor == 0)
-        throw invalid_argument("Division by zero!");
-
-    double totalKopeks = (hryvna * 100.0 + kopek) / divisor;
-    return MoneyPrivate(static_cast<long>(totalKopeks) / 100, static_cast<unsigned char>(static_cast<long>(totalKopeks) % 100));
+    long long totalA = (long long)a.hryvnia * 100 + a.kopiyky;
+    long long totalB = (long long)b.hryvnia * 100 + b.kopiyky;
+    long long result = totalA * totalB / 10000;
+    return MoneyPrivate(result / 100, result % 100);
 }
 
-double MoneyPrivate::operator/(const MoneyPrivate &other) const
+MoneyPrivate operator/(const MoneyPrivate &a, const MoneyPrivate &b)
 {
-    if (other.hryvna == 0 && other.kopek == 0)
-        throw invalid_argument("Division by zero!");
-
-    double total1 = hryvna * 100.0 + kopek;
-    double total2 = other.hryvna * 100.0 + other.kopek;
-    return total1 / total2;
-}
-
-MoneyPrivate &MoneyPrivate::operator++()
-{
-    long totalKopeks = hryvna * 100 + kopek + 1;
-    hryvna = totalKopeks / 100;
-    kopek = totalKopeks % 100;
-    return *this;
-}
-
-MoneyPrivate MoneyPrivate::operator++(int)
-{
-    MoneyPrivate temp = *this;
-    ++(*this);
-    return temp;
-}
-
-MoneyPrivate &MoneyPrivate::operator--()
-{
-    if (hryvna == 0 && kopek == 0)
+    if (b.hryvnia == 0 && b.kopiyky == 0)
     {
-        cout << "Cannot decrement below zero!" << endl;
-        return *this;
+        return MoneyPrivate(0, 0);
     }
-
-    long totalKopeks = hryvna * 100 + kopek - 1;
-    hryvna = totalKopeks / 100;
-    kopek = totalKopeks % 100;
-    return *this;
+    long double totalA = a.hryvnia * 100.0 + a.kopiyky;
+    long double totalB = b.hryvnia * 100.0 + b.kopiyky;
+    long long result = (long long)(totalA / totalB * 100);
+    return MoneyPrivate(result / 100, result % 100);
 }
 
-MoneyPrivate MoneyPrivate::operator--(int)
+bool operator==(const MoneyPrivate &a, const MoneyPrivate &b)
 {
-    MoneyPrivate temp = *this;
-    --(*this);
+    return a.hryvnia == b.hryvnia && a.kopiyky == b.kopiyky;
+}
+
+bool operator!=(const MoneyPrivate &a, const MoneyPrivate &b)
+{
+    return !(a == b);
+}
+
+bool operator>(const MoneyPrivate &a, const MoneyPrivate &b)
+{
+    return (a.hryvnia > b.hryvnia) || (a.hryvnia == b.hryvnia && a.kopiyky > b.kopiyky);
+}
+
+bool operator<(const MoneyPrivate &a, const MoneyPrivate &b)
+{
+    return (a.hryvnia < b.hryvnia) || (a.hryvnia == b.hryvnia && a.kopiyky < b.kopiyky);
+}
+
+bool operator>=(const MoneyPrivate &a, const MoneyPrivate &b)
+{
+    return (a > b) || (a == b);
+}
+
+bool operator<=(const MoneyPrivate &a, const MoneyPrivate &b)
+{
+    return (a < b) || (a == b);
+}
+
+ostream &operator<<(ostream &out, const MoneyPrivate &m)
+{
+    out << (string)m;
+    return out;
+}
+
+istream &operator>>(istream &in, MoneyPrivate &m)
+{
+    long h;
+    int k;
+    in >> h >> k;
+    m.Init(h, k);
+    return in;
+}
+
+MoneyPrivate &operator++(MoneyPrivate &m)
+{
+    if (++m.kopiyky >= 100)
+    {
+        m.kopiyky = 0;
+        ++m.hryvnia;
+    }
+    return m;
+}
+
+MoneyPrivate operator++(MoneyPrivate &m, int)
+{
+    MoneyPrivate temp = m;
+    ++m;
     return temp;
 }
 
-bool MoneyPrivate::operator==(const MoneyPrivate &other) const
+MoneyPrivate &operator--(MoneyPrivate &m)
 {
-    return (hryvna == other.hryvna) && (kopek == other.kopek);
+    if (m.kopiyky == 0)
+    {
+        --m.hryvnia;
+        m.kopiyky = 99;
+    }
+    else
+    {
+        --m.kopiyky;
+    }
+    return m;
 }
 
-bool MoneyPrivate::operator!=(const MoneyPrivate &other) const
+MoneyPrivate operator--(MoneyPrivate &m, int)
 {
-    return !(*this == other);
+    MoneyPrivate temp = m;
+    --m;
+    return temp;
 }

@@ -100,6 +100,16 @@ std::istream &operator>>(std::istream &in, Alcohol &alcohol)
     return in;
 }
 
+Alcohol &Alcohol::operator=(const Alcohol &other)
+{
+    if (this != &other)
+    {
+        Liquid::operator=(other); // Виклик присвоєння базового класу
+        strength = other.strength;
+    }
+    return *this;
+}
+
 // Оператори інкременту та декременту
 Alcohol &Alcohol::operator++()
 {

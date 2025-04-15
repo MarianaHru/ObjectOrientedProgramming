@@ -1,27 +1,31 @@
 #include "Money.h"
+#include <iostream>
+#include <string>
 #include <sstream>
 #include <iomanip>
 #include <stdexcept>
 
-Money::Money() : hryvna(0), kopek(0) {}
+Money::Money() : Pair(0, 0), kopek(0) {}
 
-Money::Money(long hryvna, unsigned char kopek)
+Money::Money(long hryvna, unsigned char kopek) : Pair(hryvna, kopek), kopek(0)
 {
-    this->hryvna = hryvna;
-    if (!SetKopek(kopek))
-        this->kopek = 0;
+    SetHryvna(hryvna);
+    SetKopek(kopek);
 }
 
-Money::Money(const Money &other)
-{
-    this->hryvna = other.hryvna;
-    this->kopek = other.kopek;
-}
+Money::Money(const Money &other) : Pair(other.first, other.second), kopek(other.kopek) {}
+
+long Money::GetHryvna() const { return first; }
+
+unsigned char Money::GetKopek() const { return kopek; }
+
+void Money::SetHryvna(long h) { first = h; }
 
 bool Money::SetKopek(unsigned char k)
 {
     if (k < 100)
     {
+        second = k;
         kopek = k;
         return true;
     }
@@ -29,32 +33,16 @@ bool Money::SetKopek(unsigned char k)
     return false;
 }
 
-std::ostream &operator<<(std::ostream &out, const Money &m)
+void Money::Init(long hryvna, unsigned char kopek)
 {
-    out << m.toString();
-    return out;
-}
-
-std::istream &operator>>(std::istream &in, Money &m)
-{
-    std::string input;
-    std::getline(in, input);
-    try
-    {
-        m.fromString(input);
-    }
-    catch (const std::invalid_argument &e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-        in.setstate(std::ios::failbit);
-    }
-    return in;
+    SetHryvna(hryvna);
+    SetKopek(kopek);
 }
 
 std::string Money::toString() const
 {
     std::stringstream sout;
-    sout << hryvna << "," << std::setw(2) << std::setfill('0') << static_cast<int>(kopek) << " UAH";
+    sout << first << "," << std::setw(2) << std::setfill('0') << static_cast<int>(kopek);
     return sout.str();
 }
 
@@ -63,70 +51,70 @@ void Money::fromString(const std::string &s)
     std::stringstream sin(s);
     char comma;
     int kop;
-    std::string currency;
-
-    if (!(sin >> hryvna >> comma >> kop))
+    if (sin >> first >> comma >> kop && comma == ',')
     {
-        throw std::invalid_argument("Invalid numeric format");
-    }
-
-    if (sin >> currency)
-    {
-        if (currency != "UAH")
+        if (!SetKopek(static_cast<unsigned char>(kop)))
         {
-            std::cerr << "Parsed currency: " << currency << std::endl;
-            throw std::invalid_argument("Invalid currency format");
+            throw std::invalid_argument("Invalid kopek value");
         }
+        second = kopek;
     }
-
-    if (!SetKopek(static_cast<unsigned char>(kop)))
+    else
     {
-        throw std::invalid_argument("Invalid kopek value");
+        throw std::invalid_argument("Invalid money format");
     }
 }
 
-// Оператор + для Money
 Money operator+(const Money &m1, const Money &m2)
 {
-    long totalKopeks = (m1.hryvna * 100 + m1.kopek) + (m2.hryvna * 100 + m2.kopek);
-    return Money(totalKopeks / 100, totalKopeks % 100);
+    long totalKopeks1 = m1.first * 100 + m1.kopek;
+    long totalKopeks2 = m2.first * 100 + m2.kopek;
+    long sumTotalKopeks = totalKopeks1 + totalKopeks2;
+    return Money(sumTotalKopeks / 100, sumTotalKopeks % 100);
 }
 
-// Оператор / для Money
+Money operator-(const Money &m1, const Money &m2)
+{
+    long totalKopeks1 = m1.first * 100 + m1.kopek;
+    long totalKopeks2 = m2.first * 100 + m2.kopek;
+    long diffTotalKopeks = totalKopeks1 - totalKopeks2;
+    if (diffTotalKopeks < 0)
+    {
+        throw std::invalid_argument("Resulting money cannot be negative");
+    }
+    return Money(diffTotalKopeks / 100, diffTotalKopeks % 100);
+}
+
 double operator/(const Money &m1, const Money &m2)
 {
-    if (m2.hryvna == 0 && m2.kopek == 0)
+    if (m2.first == 0 && m2.kopek == 0)
     {
         throw std::invalid_argument("Division by zero!");
     }
-
-    double total1 = m1.hryvna * 100.0 + m1.kopek;
-    double total2 = m2.hryvna * 100.0 + m2.kopek;
+    double total1 = m1.first * 100.0 + m1.kopek;
+    double total2 = m2.first * 100.0 + m2.kopek;
     return total1 / total2;
 }
 
-// Оператор / для Money і числа
 Money operator/(const Money &m, double divisor)
 {
     if (divisor == 0)
     {
         throw std::invalid_argument("Division by zero!");
     }
-
-    double totalKopeks = (m.hryvna * 100.0 + m.kopek) / divisor;
+    double totalKopeks = (m.first * 100.0 + m.kopek) / divisor;
     return Money(static_cast<long>(totalKopeks) / 100, static_cast<unsigned char>(static_cast<long>(totalKopeks) % 100));
 }
 
-// Префіксний інкремент
 Money &Money::operator++()
 {
-    long totalKopeks = hryvna * 100 + kopek + 1;
-    hryvna = totalKopeks / 100;
+    long totalKopeks = first * 100 + kopek + 1;
+    first = totalKopeks / 100;
     kopek = totalKopeks % 100;
+    second = kopek;
     return *this;
 }
 
-// Постфіксний інкремент
 Money Money::operator++(int)
 {
     Money temp = *this;
@@ -134,22 +122,20 @@ Money Money::operator++(int)
     return temp;
 }
 
-// Префіксний декремент
 Money &Money::operator--()
 {
-    if (hryvna == 0 && kopek == 0)
+    if (first == 0 && kopek == 0)
     {
         std::cout << "Cannot decrement below zero!" << std::endl;
         return *this;
     }
-
-    long totalKopeks = hryvna * 100 + kopek - 1;
-    hryvna = totalKopeks / 100;
+    long totalKopeks = first * 100 + kopek - 1;
+    first = totalKopeks / 100;
     kopek = totalKopeks % 100;
+    second = kopek;
     return *this;
 }
 
-// Постфіксний декремент
 Money Money::operator--(int)
 {
     Money temp = *this;
@@ -157,25 +143,23 @@ Money Money::operator--(int)
     return temp;
 }
 
-// Операція порівняння
-bool Money::operator==(const Money &other) const
-{
-    return (hryvna == other.hryvna) && (kopek == other.kopek);
-}
-
-bool Money::operator!=(const Money &other) const
-{
-    return !(*this == other);
-}
-
-// Операція присвоєння
 Money &Money::operator=(const Money &other)
 {
     if (this == &other)
     {
         return *this;
     }
-    hryvna = other.hryvna;
+    Pair::operator=(other);
     kopek = other.kopek;
     return *this;
+}
+
+Money makeMoney(long hryvna, unsigned char kopek)
+{
+    if (hryvna < 0 || kopek >= 100)
+    {
+        std::cerr << "Error: Invalid parameters for Money object." << std::endl;
+        exit(1);
+    }
+    return Money(hryvna, kopek);
 }

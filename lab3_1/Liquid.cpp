@@ -92,3 +92,13 @@ std::istream &operator>>(std::istream &in, Liquid &liquid)
     liquid.Init(inputName, inputDensity);
     return in;
 }
+
+Liquid &Liquid::operator=(const Liquid &other)
+{
+    if (this != &other)
+    {
+        name = other.name;
+        density = other.density;
+    }
+    return *this;
+}
