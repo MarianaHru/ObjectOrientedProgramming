@@ -146,7 +146,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=lab3_3_E_unit_test
+CMAKE_PROJECT_NAME:STATIC=lab3_6_unit_test
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ranlib
@@ -275,6 +275,15 @@ lab3_3_E_unit_test_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 lab3_3_E_unit_test_SOURCE_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП
+
+//Value Computed by CMake
+lab3_6_unit_test_BINARY_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build
+
+//Value Computed by CMake
+lab3_6_unit_test_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+lab3_6_unit_test_SOURCE_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП
 
 
 ########################
