@@ -252,6 +252,15 @@ lab4_2_unit_test_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 lab4_2_unit_test_SOURCE_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП
 
+//Value Computed by CMake
+lab4_3_unit_test_BINARY_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП/build
+
+//Value Computed by CMake
+lab4_3_unit_test_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+lab4_3_unit_test_SOURCE_DIR:STATIC=/Users/tarasgrudzinskij/Documents/semestr_1/  ООП
+
 
 ########################
 # INTERNAL cache entries
