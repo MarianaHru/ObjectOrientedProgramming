@@ -139,6 +139,19 @@ lab5_1_A_unit_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_A_unit_test.dir/build.make CMakeFiles/lab5_1_A_unit_test.dir/build
 .PHONY : lab5_1_A_unit_test/fast
 
+#=============================================================================
+# Target rules for targets named lab5_1_B_unit_test
+
+# Build rule for target.
+lab5_1_B_unit_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab5_1_B_unit_test
+.PHONY : lab5_1_B_unit_test
+
+# fast build rule for target.
+lab5_1_B_unit_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/build
+.PHONY : lab5_1_B_unit_test/fast
+
 lab5_1_A/Fraction.o: lab5_1_A/Fraction.cpp.o
 .PHONY : lab5_1_A/Fraction.o
 
@@ -211,6 +224,102 @@ lab5_1_A/lab5_1_A_unit_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_A_unit_test.dir/build.make CMakeFiles/lab5_1_A_unit_test.dir/lab5_1_A/lab5_1_A_unit_test.cpp.s
 .PHONY : lab5_1_A/lab5_1_A_unit_test.cpp.s
 
+lab5_1_B/Money.o: lab5_1_B/Money.cpp.o
+.PHONY : lab5_1_B/Money.o
+
+# target to build an object file
+lab5_1_B/Money.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/Money.cpp.o
+.PHONY : lab5_1_B/Money.cpp.o
+
+lab5_1_B/Money.i: lab5_1_B/Money.cpp.i
+.PHONY : lab5_1_B/Money.i
+
+# target to preprocess a source file
+lab5_1_B/Money.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/Money.cpp.i
+.PHONY : lab5_1_B/Money.cpp.i
+
+lab5_1_B/Money.s: lab5_1_B/Money.cpp.s
+.PHONY : lab5_1_B/Money.s
+
+# target to generate assembly for a file
+lab5_1_B/Money.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/Money.cpp.s
+.PHONY : lab5_1_B/Money.cpp.s
+
+lab5_1_B/MoneyException.o: lab5_1_B/MoneyException.cpp.o
+.PHONY : lab5_1_B/MoneyException.o
+
+# target to build an object file
+lab5_1_B/MoneyException.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/MoneyException.cpp.o
+.PHONY : lab5_1_B/MoneyException.cpp.o
+
+lab5_1_B/MoneyException.i: lab5_1_B/MoneyException.cpp.i
+.PHONY : lab5_1_B/MoneyException.i
+
+# target to preprocess a source file
+lab5_1_B/MoneyException.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/MoneyException.cpp.i
+.PHONY : lab5_1_B/MoneyException.cpp.i
+
+lab5_1_B/MoneyException.s: lab5_1_B/MoneyException.cpp.s
+.PHONY : lab5_1_B/MoneyException.s
+
+# target to generate assembly for a file
+lab5_1_B/MoneyException.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/MoneyException.cpp.s
+.PHONY : lab5_1_B/MoneyException.cpp.s
+
+lab5_1_B/lab5_1_B.o: lab5_1_B/lab5_1_B.cpp.o
+.PHONY : lab5_1_B/lab5_1_B.o
+
+# target to build an object file
+lab5_1_B/lab5_1_B.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/lab5_1_B.cpp.o
+.PHONY : lab5_1_B/lab5_1_B.cpp.o
+
+lab5_1_B/lab5_1_B.i: lab5_1_B/lab5_1_B.cpp.i
+.PHONY : lab5_1_B/lab5_1_B.i
+
+# target to preprocess a source file
+lab5_1_B/lab5_1_B.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/lab5_1_B.cpp.i
+.PHONY : lab5_1_B/lab5_1_B.cpp.i
+
+lab5_1_B/lab5_1_B.s: lab5_1_B/lab5_1_B.cpp.s
+.PHONY : lab5_1_B/lab5_1_B.s
+
+# target to generate assembly for a file
+lab5_1_B/lab5_1_B.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/lab5_1_B.cpp.s
+.PHONY : lab5_1_B/lab5_1_B.cpp.s
+
+lab5_1_B/lab5_1_B_unit_test.o: lab5_1_B/lab5_1_B_unit_test.cpp.o
+.PHONY : lab5_1_B/lab5_1_B_unit_test.o
+
+# target to build an object file
+lab5_1_B/lab5_1_B_unit_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/lab5_1_B_unit_test.cpp.o
+.PHONY : lab5_1_B/lab5_1_B_unit_test.cpp.o
+
+lab5_1_B/lab5_1_B_unit_test.i: lab5_1_B/lab5_1_B_unit_test.cpp.i
+.PHONY : lab5_1_B/lab5_1_B_unit_test.i
+
+# target to preprocess a source file
+lab5_1_B/lab5_1_B_unit_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/lab5_1_B_unit_test.cpp.i
+.PHONY : lab5_1_B/lab5_1_B_unit_test.cpp.i
+
+lab5_1_B/lab5_1_B_unit_test.s: lab5_1_B/lab5_1_B_unit_test.cpp.s
+.PHONY : lab5_1_B/lab5_1_B_unit_test.s
+
+# target to generate assembly for a file
+lab5_1_B/lab5_1_B_unit_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab5_1_B_unit_test.dir/build.make CMakeFiles/lab5_1_B_unit_test.dir/lab5_1_B/lab5_1_B_unit_test.cpp.s
+.PHONY : lab5_1_B/lab5_1_B_unit_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -221,6 +330,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... lab5_1_A_unit_test"
+	@echo "... lab5_1_B_unit_test"
 	@echo "... lab5_1_A/Fraction.o"
 	@echo "... lab5_1_A/Fraction.i"
 	@echo "... lab5_1_A/Fraction.s"
@@ -230,6 +340,18 @@ help:
 	@echo "... lab5_1_A/lab5_1_A_unit_test.o"
 	@echo "... lab5_1_A/lab5_1_A_unit_test.i"
 	@echo "... lab5_1_A/lab5_1_A_unit_test.s"
+	@echo "... lab5_1_B/Money.o"
+	@echo "... lab5_1_B/Money.i"
+	@echo "... lab5_1_B/Money.s"
+	@echo "... lab5_1_B/MoneyException.o"
+	@echo "... lab5_1_B/MoneyException.i"
+	@echo "... lab5_1_B/MoneyException.s"
+	@echo "... lab5_1_B/lab5_1_B.o"
+	@echo "... lab5_1_B/lab5_1_B.i"
+	@echo "... lab5_1_B/lab5_1_B.s"
+	@echo "... lab5_1_B/lab5_1_B_unit_test.o"
+	@echo "... lab5_1_B/lab5_1_B_unit_test.i"
+	@echo "... lab5_1_B/lab5_1_B_unit_test.s"
 .PHONY : help
 
 
