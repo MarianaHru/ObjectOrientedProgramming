@@ -2,7 +2,7 @@
 #include "MoneyException.h"
 #include <gtest/gtest.h>
 
-// --- Основні операції ---
+// Основні операції
 TEST(MoneyTest, ConstructorAndToString)
 {
     Money m(12, 5);
@@ -32,7 +32,7 @@ TEST(MoneyTest, DivisionByDouble)
     EXPECT_EQ((std::string)result, "5,00 UAH");
 }
 
-// --- Інкременти / декременти ---
+// Інкременти / декременти
 TEST(MoneyTest, PrefixIncrement)
 {
     Money m(1, 99);
@@ -48,7 +48,7 @@ TEST(MoneyTest, PostfixDecrement)
     EXPECT_EQ((std::string)m, "1,99 UAH");
 }
 
-// --- Винятки ---
+// Винятки
 TEST(MoneyTest, InvalidKopekThrows)
 {
     EXPECT_THROW(Money(10, 150), std::invalid_argument);

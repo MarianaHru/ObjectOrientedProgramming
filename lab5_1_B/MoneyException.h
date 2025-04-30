@@ -1,17 +1,25 @@
 #pragma once
-#include <stdexcept>
 #include <string>
+#include <exception>
 
-// Власний виняток, наслідується від стандартного std::runtime_error
-class MoneyException : public std::runtime_error
+/// Власний виняток, який наслідує std::exception
+class MoneyTooSmallException : public std::exception
 {
+private:
+    std::string message;
+
 public:
-    MoneyException(const std::string &msg) throw();
+    explicit MoneyTooSmallException(const std::string &msg) noexcept;
+    const char *what() const noexcept override;
 };
 
-// Виняток-нащадок для випадку занадто малого значення грошей
-class MoneyTooSmallException : public MoneyException
+/// Власний виняток без наслідування від std::exception
+class MoneySimpleException
 {
+private:
+    std::string message;
+
 public:
-    MoneyTooSmallException(const std::string &msg) throw();
+    explicit MoneySimpleException(const std::string &msg);
+    const std::string &getMessage() const;
 };

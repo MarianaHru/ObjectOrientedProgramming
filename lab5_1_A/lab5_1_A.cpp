@@ -1,63 +1,59 @@
-#include <iostream>
 #include "Fraction.h"
-
+#include <iostream>
 #ifndef UNIT_TESTING
 int main()
 {
     try
     {
-        Fraction f1;
-        Fraction f2(3, 4);
-        Fraction f3 = f2;
-        Fraction f4 = makeFraction(5, 6);
+        Fraction f1(5, 0); // Створює std::invalid_argument (передається за значенням)
+    }
+    catch (std::invalid_argument e)
+    { // ЗА ЗНАЧЕННЯМ
+        std::cout << "[catch by VALUE] std::invalid_argument: " << e.what() << '\n';
+    }
 
-        std::cout << "f1: " << f1 << std::endl;
-        std::cout << "f2: " << f2 << std::endl;
-        std::cout << "f3: " << f3 << std::endl;
-        std::cout << "f4: " << f4 << std::endl;
+    try
+    {
+        Fraction f2;
+        f2.setSecond(0); // Той самий виняток, але інший спосіб
+    }
+    catch (const std::invalid_argument &e)
+    { // ЗА ПОСИЛАННЯМ
+        std::cout << "[catch by REFERENCE] std::invalid_argument: " << e.what() << '\n';
+    }
 
-        Fraction f5;
-        std::cout << "Введіть дріб у форматі a/b: ";
-        std::cin >> f5;
-        std::cout << "Ви ввели: " << f5 << std::endl;
+    try
+    {
+        Fraction f3;
+        f3.setFirst(-10); // Кидає OwnException (власний виняток)
+    }
+    catch (OwnException e)
+    { // ЗА ЗНАЧЕННЯМ
+        std::cout << "[catch by VALUE] OwnException: " << e.what() << '\n';
+    }
 
-        std::cout << "Ціла частина дробу f5: " << f5.ipart() << std::endl;
-
-        std::cout << "Префіксний інкремент f2: " << ++f2 << std::endl;
-        std::cout << "Після префіксного інкременту f2: " << f2 << std::endl;
-
-        std::cout << "Постфіксний інкремент f2: " << f2++ << std::endl;
-        std::cout << "Після постфіксного інкременту f2: " << f2 << std::endl;
-
-        std::cout << "Префіксний декремент f2: " << --f2 << std::endl;
-        std::cout << "Після префіксного декременту f2: " << f2 << std::endl;
-
-        std::cout << "Постфіксний декремент f2: " << f2-- << std::endl;
-        std::cout << "Після постфіксного декременту f2: " << f2 << std::endl;
-
-        std::string strF2 = static_cast<std::string>(f2);
-        std::cout << "f2 у рядковому вигляді: " << strF2 << std::endl;
+    try
+    {
+        Fraction f4;
+        f4.Init(-5, 0); // Викидає FractionException за посиланням або вказівником
     }
     catch (FractionException &e)
-    {
-        std::cerr << "FractionException: " << e.what() << std::endl;
+    { // ЗА ПОСИЛАННЯМ
+        std::cout << "[catch by REFERENCE] FractionException: " << e.what() << '\n';
     }
-    catch (OwnException *e)
-    {
-        std::cerr << "OwnException: " << e->what() << std::endl;
+    catch (FractionException *e)
+    { // ЗА ВКАЗІВНИКОМ
+        std::cout << "[catch by POINTER] FractionException: " << e->what() << '\n';
         delete e;
     }
-    catch (std::invalid_argument &e)
+
+    try
     {
-        std::cerr << "invalid_argument: " << e.what() << std::endl;
+        throw std::bad_exception(); // ЯВНО кидаємо std::bad_exception
     }
-    catch (std::bad_exception &e)
-    {
-        std::cerr << "bad_exception: Сталася помилка з доступом до знаменника!" << std::endl;
-    }
-    catch (...)
-    {
-        std::cerr << "Невідома помилка!" << std::endl;
+    catch (std::bad_exception &)
+    { // за посиланням (можна й за значенням)
+        std::cout << "[catch] std::bad_exception caught\n";
     }
 
     return 0;

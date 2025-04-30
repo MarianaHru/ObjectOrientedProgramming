@@ -11,20 +11,20 @@ private:
 
 public:
     Money() noexcept;
-    Money(long hryvna, unsigned char kopek) noexcept(false);
+    Money(long hryvna, unsigned char kopek);
     Money(const Money &other) noexcept;
 
-    long GetHryvna() const noexcept { return hryvna; }
-    unsigned char GetKopek() const noexcept { return kopek; }
+    long GetHryvna() const noexcept;
+    unsigned char GetKopek() const noexcept;
 
-    void SetHryvna(long h) noexcept { hryvna = h; }
-    bool SetKopek(unsigned char k) noexcept(false);
+    void SetHryvna(long h) noexcept;
+    bool SetKopek(unsigned char k);
 
-    void fromString(const std::string &s) noexcept(false);
+    void fromString(const std::string &s);
 
-    friend Money operator+(const Money &m1, const Money &m2) noexcept;
-    friend double operator/(const Money &m1, const Money &m2) noexcept(false);
-    friend Money operator/(const Money &m, double divisor) noexcept(false);
+    friend Money operator+(const Money &m1, const Money &m2);
+    friend double operator/(const Money &m1, const Money &m2);
+    friend Money operator/(const Money &m, double divisor);
 
     Money &operator++();   // Префіксний інкремент
     Money operator++(int); // Постфіксний інкремент
@@ -38,5 +38,5 @@ public:
     friend std::ostream &operator<<(std::ostream &out, const Money &m);
     friend std::istream &operator>>(std::istream &in, Money &m);
 
-    explicit operator std::string() const; // Приведення до рядка
+    explicit operator std::string() const;
 };

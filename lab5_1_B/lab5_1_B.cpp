@@ -6,7 +6,6 @@ int main()
 {
     try
     {
-        // Створення об'єктів Money
         Money m1(10, 50);
         Money m2(5, 75);
 
@@ -28,52 +27,102 @@ int main()
         m1--;
         std::cout << "Після m1--: " << m1 << "\n";
 
-        // --- Генерація винятків ---
+        // 1. Виняток за значенням
+        try
+        {
+            throw MoneySimpleException("Виняток за значенням");
+        }
+        catch (MoneySimpleException e)
+        {
+            std::cerr << "[За значенням] " << e.getMessage() << "\n";
+        }
 
-        // 1. Декремент до нуля -> std::underflow_error (передача за вказівником)
-        Money zero(0, 0);
-        zero--; // зловимо під час catch (std::underflow_error*)
+        // 2. Виняток за посиланням
+        try
+        {
+            throw MoneySimpleException("Виняток за посиланням");
+        }
+        catch (const MoneySimpleException &e)
+        {
+            std::cerr << "[За посиланням] " << e.getMessage() << "\n";
+        }
 
-        // 2. Некоректні копійки (std::invalid_argument через конструктор)
-        Money wrongKopek(5, 150); // копійки більше 100 -> стандартний виняток
-
-        // 3. Невірний формат рядка (невірна валюта) -> MoneyException
-        Money wrongCurrency;
-        wrongCurrency.fromString("100,50 USD"); // валюта не "UAH" -> власний виняток
-
-        // 4. Ділення на нульовий Money об'єкт -> std::domain_error
-        Money mzero(0, 0);
-        double res = m1 / mzero; // поділ на 0 гривень
-
-        // 5. Спеціально кидаємо виняток-нащадок
-        throw MoneyTooSmallException("Сума занадто мала!"); // за значенням
+        // 3. Виняток за вказівником
+        try
+        {
+            throw new MoneySimpleException("Виняток за вказівником");
+        }
+        catch (MoneySimpleException *e)
+        {
+            std::cerr << "[За вказівником] " << e->getMessage() << "\n";
+            delete e;
+        }
     }
-    catch (MoneyTooSmallException ex) // власний виняток-нащадок за значенням
+    catch (const MoneySimpleException &e)
     {
-        std::cerr << "MoneyTooSmallException: " << ex.what() << '\n';
+        std::cerr << "MoneySimpleException: " << e.getMessage() << "\n";
     }
-    catch (MoneyException &ex) // власний виняток за посиланням
+    catch (const MoneyTooSmallException &e)
     {
-        std::cerr << "MoneyException: " << ex.what() << '\n';
+        std::cerr << "MoneyTooSmallException: " << e.what() << "\n";
     }
-    catch (std::invalid_argument &ex) // стандартний виняток за посиланням
+    catch (const std::exception &e)
     {
-        std::cerr << "Invalid Argument: " << ex.what() << '\n';
-    }
-    catch (std::domain_error &ex) // стандартний виняток за посиланням
-    {
-        std::cerr << "Domain Error: " << ex.what() << '\n';
-    }
-    catch (std::underflow_error *ex) // стандартний виняток за вказівником
-    {
-        std::cerr << "Underflow Error: " << ex->what() << '\n';
-        delete ex; // обов'язково очищаємо пам'ять
-    }
-    catch (...)
-    {
-        std::cerr << "Невідомий виняток!\n";
+        std::cerr << "Стандартний виняток: " << e.what() << "\n";
     }
 
     return 0;
 }
 #endif
+
+// #include <iostream>
+// #include "Money.h"
+// #include "MoneyException.h"
+
+// int main()
+// {
+//     try
+//     {
+//         Money m1(10, 50);
+//         Money m2(5, 75);
+
+//         std::cout << "m1 = " << m1 << std::endl;
+//         std::cout << "m2 = " << m2 << std::endl;
+
+//         Money sum = m1 + m2;
+//         std::cout << "Сума: " << sum << std::endl;
+
+//         double ratio = m1 / m2;
+//         std::cout << "Відношення m1/m2: " << ratio << std::endl;
+
+//         Money half = m1 / 2;
+//         std::cout << "m1 поділений на 2: " << half << std::endl;
+
+//         ++m1;
+//         std::cout << "Після ++m1: " << m1 << std::endl;
+
+//         m1--;
+//         std::cout << "Після m1--: " << m1 << std::endl;
+
+//         // Виклик винятку: некоректні копійки
+//         Money wrong(10, 150);
+//     }
+//     catch (const MoneySimpleException &e)
+//     {
+//         std::cerr << "Виняток: " << e.what() << std::endl;
+//     }
+
+//     try
+//     {
+//         Money m1(10, 50);
+//         Money zero(0, 0); // Виняток: ділення на 0
+//         double res = m1 / zero;
+//         std::cout << "Результат ділення на нуль: " << res << std::endl;
+//     }
+//     catch (const MoneyTooSmallException &e)
+//     {
+//         std::cerr << "Виняток: " << e.what() << std::endl;
+//     }
+
+//     return 0;
+// }
