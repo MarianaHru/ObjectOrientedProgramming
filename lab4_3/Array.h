@@ -1,4 +1,3 @@
-// Array.h
 #ifndef ARRAY_H
 #define ARRAY_H
 
@@ -15,19 +14,18 @@ public:
     Array(int n = 0, unsigned char val = 0);
     virtual ~Array() = default;
 
-    int
-    getSize() const;
+    int getSize() const;
     bool rangeCheck(int index) const;
 
     unsigned char &operator[](int index);
     const unsigned char &operator[](int index) const;
 
-    virtual Array *add(const Array &other) const = 0;
-    virtual Array *subtract(const Array &other) const = 0;
-    virtual Array *multiply(const Array &other) const = 0;
-    virtual Array *divide(const Array &other) const = 0;
-    virtual void print() const = 0;
-    virtual int compare(const Array &other) const = 0;
+    virtual Array *add(const Array &other) const;
+    virtual Array *subtract(const Array &other) const;
+    virtual Array *multiply(const Array &other) const;
+    virtual Array *divide(const Array &other) const;
+    virtual void print() const;
+    virtual int compare(const Array &other) const;
 };
 
 #endif
