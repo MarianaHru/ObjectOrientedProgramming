@@ -13,6 +13,17 @@ Array createDynamicArray(int *arr, int size)
     if (size <= 0)
         return dynamicArray;
 
+    // Обчислюємо суму і середнє за абсолютною величиною
+    double sum = 0;
+    double absSum = 0;
+    for (int i = 0; i < size; ++i)
+    {
+        sum += arr[i];
+        absSum += abs(arr[i]);
+    }
+
+    double meanAbs = absSum / size;
+
     // Знаходимо максимум
     int maxVal = arr[0];
     for (int i = 1; i < size; ++i)
@@ -27,23 +38,13 @@ Array createDynamicArray(int *arr, int size)
         dynamicArray[i] = arr[i] - maxVal;
     }
 
-    // Обчислюємо суму і середнє за абсолютною величиною
-    double sum = 0;
-    double absSum = 0;
-    for (int i = 0; i < size; ++i)
-    {
-        sum += dynamicArray[i];
-        absSum += abs(dynamicArray[i]);
-    }
-
-    double meanAbs = absSum / size;
-
-    // Додаємо до кінця масиву
+    // Додаємо до кінця масиву початкову суму та середнє за абсолютною величиною
     dynamicArray.push_back(sum);
     dynamicArray.push_back(meanAbs);
 
     return dynamicArray;
 }
+
 #ifndef UNIT_TESTING
 int main()
 {

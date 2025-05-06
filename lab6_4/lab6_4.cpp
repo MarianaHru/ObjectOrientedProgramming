@@ -19,7 +19,7 @@ public:
     }
 
     // Конструктор копіювання
-    MyVector(const MyVector &other)
+    MyVector(const ector &other)
     {
         size = other.size;
         v = new T[size];
