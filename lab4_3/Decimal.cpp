@@ -9,19 +9,16 @@ Decimal::Decimal(int n, unsigned char val) : Array(n)
         (*this)[i] = val % 10; // кожна цифра від 0 до 9
 }
 
-// Сума з урахуванням переносу
+// Сума без урахування переносу
 Array *Decimal::add(const Array &other) const
 {
     if (getSize() != other.getSize())
         throw std::invalid_argument("Decimal: size mismatch for addition");
 
     Decimal *result = new Decimal(getSize());
-    int carry = 0;
     for (int i = 0; i < getSize(); ++i)
     {
-        int sum = (*this)[i] + other[i] + carry;
-        (*result)[i] = sum % 10;
-        carry = sum / 10;
+        (*result)[i] = (*this)[i] + other[i]; // Проста сума
     }
     return result;
 }
@@ -51,7 +48,7 @@ Array *Decimal::subtract(const Array &other) const
     return result;
 }
 
-// Множення нацифру (простий алгоритм)
+// Множення на цифру (простий алгоритм)
 Array *Decimal::multiply(const Array &other) const
 {
     if (getSize() != other.getSize())
@@ -95,12 +92,55 @@ void Decimal::print() const
     std::cout << std::endl;
 }
 
+// Порівняння: рівність
 int Decimal::compare(const Array &other) const
 {
-    for (int i = getSize() - 1; i >= 0; --i)
+    if (getSize() != other.getSize())
+        throw std::invalid_argument("Decimal: size mismatch for comparison");
+
+    for (int i = 0; i < getSize(); ++i)
     {
-        if ((*this)[i] != other[i])
-            return (*this)[i] - other[i];
+        if ((*this)[i] < other[i])
+            return -1; // Менше
+        else if ((*this)[i] > other[i])
+            return 1; // Більше
     }
-    return 0;
+
+    return 0; // Рівні
+}
+
+// Рівність
+bool operator==(const Decimal &lhs, const Array &rhs)
+{
+    return lhs.compare(rhs) == 0;
+}
+
+// Не рівність
+bool operator!=(const Decimal &lhs, const Array &rhs)
+{
+    return lhs.compare(rhs) != 0;
+}
+
+// Більше
+bool operator>(const Decimal &lhs, const Array &rhs)
+{
+    return lhs.compare(rhs) > 0;
+}
+
+// Менше
+bool operator<(const Decimal &lhs, const Array &rhs)
+{
+    return lhs.compare(rhs) < 0;
+}
+
+// Більше або рівне
+bool operator>=(const Decimal &lhs, const Array &rhs)
+{
+    return lhs.compare(rhs) >= 0;
+}
+
+// Менше або рівне
+bool operator<=(const Decimal &lhs, const Array &rhs)
+{
+    return lhs.compare(rhs) <= 0;
 }
