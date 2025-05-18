@@ -79,3 +79,39 @@ target_link_libraries(lab6_4_unit_test PRIVATE GTest::gtest GTest::gtest_main pt
 enable_testing()
 add_test(NAME Lab6_4_UnitTests COMMAND lab6_4_unit_test)
 
+
+
+# lab6_7
+project(lab6_7_unit_test)
+
+# Використовуємо C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Підключаємо Google Test
+find_package(GTest REQUIRED)
+
+# Перевіряємо, чи знайшовся Google Test
+if(NOT GTest_FOUND)
+    message(FATAL_ERROR "Google Test not found! Install it or provide its path.")
+endif()
+
+add_executable(lab6_7_unit_test 
+    lab6_7/lab6_7_unit_test.cpp 
+    lab6_7/Array.cpp
+    lab6_7/Source.cpp
+)
+
+# Визначаємо макрос UNIT_TESTING
+target_compile_definitions(lab6_7_unit_test PRIVATE UNIT_TESTING)
+
+# Додаємо заголовочні файли
+target_include_directories(lab6_7_unit_test PRIVATE ${GTEST_INCLUDE_DIRS} lab6_7)
+
+# Лінкуємо Google Test і pthread
+target_link_libraries(lab6_7_unit_test PRIVATE GTest::gtest GTest::gtest_main pthread)
+
+# Додаємо команду для запуску тестів
+enable_testing()
+add_test(NAME Lab6_7_UnitTests COMMAND lab6_7_unit_test)
+

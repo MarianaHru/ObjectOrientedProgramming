@@ -64,4 +64,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/lab6_1_unit_test.dir/DependInfo.cmake"
   "CMakeFiles/lab6_4_unit_test.dir/DependInfo.cmake"
+  "CMakeFiles/lab6_7_unit_test.dir/DependInfo.cmake"
   )

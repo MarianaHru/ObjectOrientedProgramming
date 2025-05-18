@@ -152,6 +152,19 @@ lab6_4_unit_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_4_unit_test.dir/build.make CMakeFiles/lab6_4_unit_test.dir/build
 .PHONY : lab6_4_unit_test/fast
 
+#=============================================================================
+# Target rules for targets named lab6_7_unit_test
+
+# Build rule for target.
+lab6_7_unit_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab6_7_unit_test
+.PHONY : lab6_7_unit_test
+
+# fast build rule for target.
+lab6_7_unit_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/build
+.PHONY : lab6_7_unit_test/fast
+
 lab6_1/Array.o: lab6_1/Array.cpp.o
 .PHONY : lab6_1/Array.o
 
@@ -272,6 +285,78 @@ lab6_4/lab6_4_unit_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_4_unit_test.dir/build.make CMakeFiles/lab6_4_unit_test.dir/lab6_4/lab6_4_unit_test.cpp.s
 .PHONY : lab6_4/lab6_4_unit_test.cpp.s
 
+lab6_7/Array.o: lab6_7/Array.cpp.o
+.PHONY : lab6_7/Array.o
+
+# target to build an object file
+lab6_7/Array.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/lab6_7/Array.cpp.o
+.PHONY : lab6_7/Array.cpp.o
+
+lab6_7/Array.i: lab6_7/Array.cpp.i
+.PHONY : lab6_7/Array.i
+
+# target to preprocess a source file
+lab6_7/Array.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/lab6_7/Array.cpp.i
+.PHONY : lab6_7/Array.cpp.i
+
+lab6_7/Array.s: lab6_7/Array.cpp.s
+.PHONY : lab6_7/Array.s
+
+# target to generate assembly for a file
+lab6_7/Array.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/lab6_7/Array.cpp.s
+.PHONY : lab6_7/Array.cpp.s
+
+lab6_7/Source.o: lab6_7/Source.cpp.o
+.PHONY : lab6_7/Source.o
+
+# target to build an object file
+lab6_7/Source.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/lab6_7/Source.cpp.o
+.PHONY : lab6_7/Source.cpp.o
+
+lab6_7/Source.i: lab6_7/Source.cpp.i
+.PHONY : lab6_7/Source.i
+
+# target to preprocess a source file
+lab6_7/Source.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/lab6_7/Source.cpp.i
+.PHONY : lab6_7/Source.cpp.i
+
+lab6_7/Source.s: lab6_7/Source.cpp.s
+.PHONY : lab6_7/Source.s
+
+# target to generate assembly for a file
+lab6_7/Source.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/lab6_7/Source.cpp.s
+.PHONY : lab6_7/Source.cpp.s
+
+lab6_7/lab6_7_unit_test.o: lab6_7/lab6_7_unit_test.cpp.o
+.PHONY : lab6_7/lab6_7_unit_test.o
+
+# target to build an object file
+lab6_7/lab6_7_unit_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/lab6_7/lab6_7_unit_test.cpp.o
+.PHONY : lab6_7/lab6_7_unit_test.cpp.o
+
+lab6_7/lab6_7_unit_test.i: lab6_7/lab6_7_unit_test.cpp.i
+.PHONY : lab6_7/lab6_7_unit_test.i
+
+# target to preprocess a source file
+lab6_7/lab6_7_unit_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/lab6_7/lab6_7_unit_test.cpp.i
+.PHONY : lab6_7/lab6_7_unit_test.cpp.i
+
+lab6_7/lab6_7_unit_test.s: lab6_7/lab6_7_unit_test.cpp.s
+.PHONY : lab6_7/lab6_7_unit_test.s
+
+# target to generate assembly for a file
+lab6_7/lab6_7_unit_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab6_7_unit_test.dir/build.make CMakeFiles/lab6_7_unit_test.dir/lab6_7/lab6_7_unit_test.cpp.s
+.PHONY : lab6_7/lab6_7_unit_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -283,6 +368,7 @@ help:
 	@echo "... test"
 	@echo "... lab6_1_unit_test"
 	@echo "... lab6_4_unit_test"
+	@echo "... lab6_7_unit_test"
 	@echo "... lab6_1/Array.o"
 	@echo "... lab6_1/Array.i"
 	@echo "... lab6_1/Array.s"
@@ -298,6 +384,15 @@ help:
 	@echo "... lab6_4/lab6_4_unit_test.o"
 	@echo "... lab6_4/lab6_4_unit_test.i"
 	@echo "... lab6_4/lab6_4_unit_test.s"
+	@echo "... lab6_7/Array.o"
+	@echo "... lab6_7/Array.i"
+	@echo "... lab6_7/Array.s"
+	@echo "... lab6_7/Source.o"
+	@echo "... lab6_7/Source.i"
+	@echo "... lab6_7/Source.s"
+	@echo "... lab6_7/lab6_7_unit_test.o"
+	@echo "... lab6_7/lab6_7_unit_test.i"
+	@echo "... lab6_7/lab6_7_unit_test.s"
 .PHONY : help
 
 
