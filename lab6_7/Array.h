@@ -21,10 +21,10 @@ private:
     value_type *elems;
 
 public:
-    Array(const size_type &n = minsize) noexcept(false);
-    Array(const Array &) noexcept(false);
-    Array(const iterator first, const iterator last) noexcept(false);
-    Array(const size_type first, const size_type last) noexcept(false);
+    Array(const size_type &n = minsize) throw(bad_alloc, invalid_argument);
+    Array(const Array &) throw(bad_alloc);
+    Array(const iterator first, const iterator last) throw(bad_alloc, invalid_argument);
+    Array(const size_type first, const size_type last) throw(bad_alloc, invalid_argument);
     ~Array();
     Array &operator=(const Array &);
 
@@ -36,10 +36,10 @@ public:
     size_type size() const;
     bool empty() const;
     size_type capacity() const;
-    void resize(size_type newsize);
+    void resize(size_type newsize) throw(bad_alloc);
 
-    reference operator[](size_type);
-    const_reference operator[](size_type) const;
+    reference operator[](size_type) throw(out_of_range);
+    const_reference operator[](size_type) const throw(out_of_range);
     reference front() { return elems[0]; }
     const_reference front() const { return elems[0]; }
     reference back() { return elems[size() - 1]; }

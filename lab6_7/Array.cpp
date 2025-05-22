@@ -1,80 +1,111 @@
 #include "Array.h"
 #include <stdexcept>
-#include <algorithm>
+using namespace std;
 
-Array::Array(const size_type &n)
+Array::Array(const size_type &n) throw(bad_alloc, invalid_argument)
 {
-    if (n < minsize)
-        throw std::invalid_argument("Size must be >= minsize");
-    Size = n;
-    Count = 0;
     First = 0;
+    Count = Size = n;
     elems = new value_type[Size];
+    for (UINT i = 0; i < Size; ++i)
+        elems[i] = 0;
 }
 
-Array::Array(const iterator first, const iterator last)
+Array::Array(const iterator first, const iterator last) throw(bad_alloc, invalid_argument)
 {
-    if (first > last)
-        throw std::invalid_argument("Invalid range: first > last");
-    Size = last - first;
-    Count = Size;
-    First = 0;
-    elems = new value_type[Size];
-    std::copy(first, last, elems);
+    if (first <= last)
+    {
+        First = 0;
+        Count = Size = (last - first) + 1;
+        elems = new value_type[Size];
+        for (UINT i = 0; i < Size; ++i)
+            elems[i] = 0;
+    }
+    else
+        throw invalid_argument("Invalid iterator range!");
 }
 
-Array::Array(const size_type first, const size_type last)
+Array::Array(const size_type first, const size_type last) throw(bad_alloc, invalid_argument)
 {
-    if (first > last)
-        throw std::invalid_argument("Invalid range: first > last");
-    Size = last - first;
-    Count = Size;
-    First = first;
-    elems = new value_type[Size];
-    for (size_type i = 0; i < Size; ++i)
-        elems[i] = static_cast<value_type>(First + i);
+    if (first <= last)
+    {
+        First = first;
+        Count = Size = (last - first) + 1;
+        elems = new value_type[Size];
+        for (UINT i = 0; i < Size; ++i)
+            elems[i] = 0;
+    }
+    else
+        throw invalid_argument("Invalid index range!");
 }
 
-Array::Array(const Array &other)
+Array::Array(const Array &t) throw(bad_alloc)
+    : Size(t.Size), Count(t.Count), First(t.First), elems(new value_type[Size])
 {
-    Size = other.Size;
-    Count = other.Count;
-    First = other.First;
-    elems = new value_type[Size];
-    std::copy(other.elems, other.elems + Count, elems);
+    for (UINT i = 0; i < Size; ++i)
+        elems[i] = t.elems[i];
+}
+
+Array &Array::operator=(const Array &t)
+{
+    Array tmp(t);
+    swap(tmp);
+    return *this;
 }
 
 Array::~Array()
 {
     delete[] elems;
+    elems = 0;
 }
 
-Array &Array::operator=(const Array &other)
+void Array::push_back(const value_type &v)
 {
-    if (this != &other)
+    if (Count == Size)
+        resize(Size * 2);
+    elems[Count++] = v;
+}
+
+Array::reference Array::operator[](size_type index) throw(out_of_range)
+{
+    if ((First <= index) && (index < First + Size))
+        return elems[index - First];
+    else
+        throw out_of_range("Index out of range!");
+}
+
+Array::const_reference Array::operator[](size_type index) const throw(out_of_range)
+{
+    if ((First <= index) && (index < First + Size))
+        return elems[index - First];
+    else
+        throw out_of_range("Index out of range!");
+}
+
+void Array::resize(size_type newsize) throw(bad_alloc)
+{
+    if (newsize > capacity())
     {
+        value_type *data = new value_type[newsize];
+        for (size_type i = 0; i < Count; ++i)
+            data[i] = elems[i];
         delete[] elems;
-        Size = other.Size;
-        Count = other.Count;
-        First = other.First;
-        elems = new value_type[Size];
-        std::copy(other.elems, other.elems + Count, elems);
+        elems = data;
+        Size = newsize;
     }
-    return *this;
 }
 
-Array::reference Array::operator[](size_type index)
+void Array::swap(Array &other)
 {
-    if (index >= Count)
-        throw std::out_of_range("Index out of range");
-    return elems[index];
+    std::swap(elems, other.elems);
+    std::swap(Size, other.Size);
+    std::swap(Count, other.Count);
+    std::swap(First, other.First);
 }
 
-Array::const_reference Array::operator[](size_type index) const
+Array::size_type Array::capacity() const
 {
-    if (index >= Count)
-        throw std::out_of_range("Index out of range");
-    return elems[index];
+    return Size;
 }
 
 Array::size_type Array::size() const
@@ -87,52 +118,17 @@ bool Array::empty() const
     return Count == 0;
 }
 
-Array::size_type Array::capacity() const
+ostream &operator<<(ostream &out, const Array &tmp)
 {
-    return Size;
-}
-
-void Array::resize(size_type newsize)
-{
-    if (newsize < Count)
-        throw std::invalid_argument("New size must be >= current element count");
-    value_type *newElems = new value_type[newsize];
-    std::copy(elems, elems + Count, newElems);
-    delete[] elems;
-    elems = newElems;
-    Size = newsize;
-}
-
-void Array::push_back(const value_type &v)
-{
-    if (Count >= Size)
-        resize(Size * 2);
-    elems[Count++] = v;
-}
-
-void Array::swap(Array &other)
-{
-    std::swap(Size, other.Size);
-    std::swap(Count, other.Count);
-    std::swap(First, other.First);
-    std::swap(elems, other.elems);
-}
-
-std::ostream &operator<<(std::ostream &out, const Array &a)
-{
-    for (Array::size_type i = 0; i < a.Count; ++i)
-    {
-        out << a.elems[i] << " ";
-    }
+    for (size_t j = 0; j < tmp.Count; ++j)
+        out << tmp[j] << " ";
+    out << endl;
     return out;
 }
 
-std::istream &operator>>(std::istream &in, Array &a)
+istream &operator>>(istream &in, Array &tmp)
 {
-    for (Array::size_type i = 0; i < a.Size; ++i)
-    {
-        in >> a.elems[i];
-    }
-    a.Count = a.Size;
+    for (size_t j = 0; j < tmp.Count; ++j)
+        in >> tmp[j];
     return in;
 }
